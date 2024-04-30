@@ -1,0 +1,107 @@
+
+.login-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background:url("../../assets/journal\ cover.jpeg") ;
+    background-size: cover;
+}
+.logo{
+  background: url('../../assets/logo.png');
+  background-size: cover;
+  border-radius: 50%;
+  margin-bottom: 30px;
+  width: 10rem;
+  height: 10rem;
+}
+.form-container {
+    width: 300px;
+    height: auto;
+    // background: rgba(255, 255, 255, 0); /* Change the opacity value to make it transparent */
+    max-width: 400px; /* Optional: Set a maximum width to avoid it stretching too wide on larger screens */
+    margin: 10rem 15rem; /* Center the form container horizontally and vertically */
+    padding: 20px;
+    border-radius: 10px;
+   
+}
+  
+  h2 {
+    color: #7d8491;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  label {
+    color: #eaf0ce;
+    font-weight: bold;
+  }
+  
+  .input-field {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #7d8491;
+    border-radius: 5px;
+  }
+  
+  .login-button {
+    background-color: #9fa5a9;
+    color: #ffffff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+  }
+  
+  .login-button:hover {
+    background-color: #c0c5c1;
+  }
+  
+  .signup-text {
+    text-align: center;
+  }
+  
+  .signup-button {
+    background-color: transparent;
+    border: none;
+    color: #574b60;
+    cursor: pointer;
+  }
+
+  
+  .avatar-image {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background: url("../../assets/Bash.png");
+  }
+  .avatar-container {
+    position: relative;
+    text-align: center;
+    width: 300px;
+  }
+  
+  .avatar-text {
+    position: absolute;
+    background-color: #ffffff;
+    border: 1px solid #7d8491;
+    border-radius: 10px;
+    padding: 10px; /* Add padding to give some space around the text */
+    height: 150px;
+    width: 300px; /* Set the width to 300px */
+    bottom: 20px; /* Adjust bottom spacing */
+    left: 50%;
+    transform: translateX(-50%);
+    color: #7d8491;
+    font-style: italic;
+    text-align: center; /* Center the text horizontally */
+}
+
+  
+  
