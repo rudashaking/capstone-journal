@@ -15,7 +15,7 @@ const AvatarPick = ({ updateUser }) => {
     try {
       const response = await axios.get('/api/user');
       setUser(response.data);
-      setSelectedAvatar(response.data.avatar || 'default'); // Set default avatar if no previous avatar exists
+      setSelectedAvatar(response.data.avatar || 'default'); 
     } catch (error) {
       console.error('Error fetching user data:', error);
     }
@@ -53,7 +53,7 @@ const AvatarPick = ({ updateUser }) => {
     <div className="settings-page">
       <h2 className="title">Avatar Selection</h2>
       <div className="avatar-options">
-        {/* Replace avatar URLs with DiceBear API endpoint */}
+      
         <div onClick={() => handleAvatarSelection('male')} className={selectedAvatar === 'male' ? 'avatar-option selected' : 'avatar-option'}>
           <img src={`https://avatars.dicebear.com/api/male/${user.username}.svg`} alt="Male Avatar" />
           <p>Male</p>
@@ -62,7 +62,7 @@ const AvatarPick = ({ updateUser }) => {
           <img src={`https://avatars.dicebear.com/api/female/${user.username}.svg`} alt="Female Avatar" />
           <p>Female</p>
         </div>
-        {/* Default avatar */}
+      
         <div onClick={() => handleAvatarSelection('default')} className={selectedAvatar === 'default' ? 'avatar-option selected' : 'avatar-option'}>
           <img src={`https://avatars.dicebear.com/api/human/${user.username}.svg`} alt="Default Avatar" />
           <p>Default</p>

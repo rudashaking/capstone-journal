@@ -9,12 +9,12 @@ const Sidebar = ({ username }) => {
 
   const handleAiResponseChange = (event) => {
     setAiResponse(event.target.value);
-    // Add logic to handle AI response input here
+   
   };
 
   const startWebSpeechAI = () => {
     console.log("Starting Web Speech AI...");
-    // Add logic to start Web Speech AI here
+   
   };
 
   return (

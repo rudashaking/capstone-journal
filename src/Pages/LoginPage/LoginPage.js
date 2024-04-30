@@ -19,19 +19,19 @@ const LoginPage = () => {
         password
       });
       
-      // Extract the JWT token from the response
+    
       const token = response.data.token;
 
-      // Store the token in local storage
+    
       localStorage.setItem('token', token);
 
-      // Set the default authorization header for Axios requests
+    
       axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
 
-      // Redirect to journal collection page
+    
       navigate('/journal-collection');
     } catch (error) {
-      // Handle login error (e.g., display error message)
+     
       console.error('Login failed:', error.response.data.message);
       setError('Invalid username or password');
     }

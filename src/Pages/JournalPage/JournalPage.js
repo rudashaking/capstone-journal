@@ -4,13 +4,13 @@ import Sidebar from '../../Components/sidebar/Sidebar';
 import axios from 'axios';
 
 const JournalPage = () => {
-  const { id } = useParams(); // Get the journal ID from the URL params
+  const { id } = useParams(); 
   const [journal, setJournal] = useState(null);
 
   useEffect(() => {
-    // Fetch the journal data when the component mounts
+   
     fetchJournal();
-  }, [id]); // Include id in the dependency array to refetch when id changes
+  }, [id]); 
 
   const fetchJournal = async () => {
     try {
@@ -28,16 +28,16 @@ const JournalPage = () => {
 
   return (
     <div className="journal-page">
-      {/* Sidebar component */}
+   
       <Sidebar />
 
       <div className="journal-content">
-        {/* Render journal content here */}
+       
         {journal && (
           <div>
             <h2>{journal.title}</h2>
             <p>{journal.description}</p>
-            {/* Additional journal content */}
+          
           </div>
         )}
       </div>

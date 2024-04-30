@@ -8,24 +8,17 @@ width: 750px;
 height: 960px;
 }
 
-// .login-page {
-//     display: flex;
-//     flex-direction: column;
-//     align-items: center;
-//     justify-content: center;
-//     height: 100vh;
-   
-// }
+
 
 .form-container {
     width: 300px;
     height: auto;
-    background: rgba(255, 255, 255, 0.8); /* Change the opacity value to make it transparent */
-    max-width: 400px; /* Optional: Set a maximum width to avoid it stretching too wide on larger screens */
-    margin: 10rem 15rem; /* Center the form container horizontally and vertically */
+    background: rgba(255, 255, 255, 0.8); 
+    max-width: 400px;
+    margin: 10rem 15rem; 
     padding: 20px;
     border-radius: 10px;
-    backdrop-filter: blur(5px); /* Add a backdrop filter for additional transparency */
+    backdrop-filter: blur(5px); 
 }
 
   

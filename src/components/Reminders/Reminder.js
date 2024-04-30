@@ -1,8 +1,8 @@
 import React from 'react';
-import './Reminders.scss'; // Import the stylesheet
+import './Reminders.scss'; 
 
 const Reminder = () => {
-  // Hardcoded journal entry reminder data for testing
+ 
   const reminders = [
     { date: '2024-04-25', title: 'Reflect on yesterday', color: '#FF6347' },
     { date: '2024-04-26', title: 'Write about today\'s achievements', color: '#7FFF00' },

@@ -1,20 +1,20 @@
 .header {
-  background-color: #28a99e; /* Dark background color */
-  color: #fff; /* White text color */
-  height: 3rem; /* Set header height */
-  padding: 0 20px; /* Add padding */
+  background-color: #28a99e; 
+  color: #fff; 
+  height: 3rem;
+  padding: 0 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add shadow for depth */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
   border-radius: 3px;
 }
 
 .header .title {
   font-size: 1.5rem;
   font-weight: bold;
-  letter-spacing: 1px; /* Add letter spacing */
-  color: #ffa500; /* Orange text color */
+  letter-spacing: 1px; 
+  color: #ffa500; 
 }
 
 .header .avatar-container {
@@ -34,7 +34,6 @@ img {
   font-weight: bold;
 }
 
-/* Add hover effect for avatar */
 .header .avatar-container img:hover {
-  transform: scale(1.1); /* Scale up on hover */
+  transform: scale(1.1); 
 }

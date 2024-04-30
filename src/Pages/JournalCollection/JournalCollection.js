@@ -10,7 +10,7 @@ const JournalCollectionPage = ({ journalEntries }) => {
   const [journals, setJournals] = useState([]);
 
   useEffect(() => {
-    // Fetch journal entries when component mounts
+   
     fetchJournals();
   }, []);
 
@@ -25,60 +25,60 @@ const JournalCollectionPage = ({ journalEntries }) => {
       setJournals(response.data);
     } catch (error) {
       console.error('Error fetching journals:', error);
-      // Handle error (e.g., show error message)
+     
     }
   };
 
-  // Function to handle opening the modal
+
   const handleOpenModal = () => {
     setOpenModal(true);
   };
 
-  // Function to handle closing the modal
+  
   const handleCloseModal = () => {
     setOpenModal(false);
   };
 
-  // Function to handle adding a new journal
+
   const handleAddJournal = async () => {
     try {
-      const token = localStorage.getItem('token'); // Assuming you store the token in localStorage
+      const token = localStorage.getItem('token'); 
 
-      // Make an API call to send the new journal data to the backend
+      
       await axios.post('http://localhost:8080/journals', {
         title,
         description: description || null,
       }, {
         headers: {
-          Authorization: token ? `Bearer ${token}` : '', // Include the token in the request headers
+          Authorization: token ? `Bearer ${token}` : '', 
         }
       });
 
-      // Reset the form fields and close the modal
+      
       setTitle('');
       setDescription('');
       handleCloseModal();
 
-      // Show success alert
+   
       setAlert({ type: 'success', message: 'Journal added successfully' });
     } catch (error) {
       console.error('Error adding journal:', error);
-      // Show error alert
+     
       setAlert({ type: 'error', message: 'Failed to add journal' });
     }
   };
 
   return (
     <div className="journal-collection-page">
-      {/* Button to open the modal */}
+      
       <Button variant="contained" color="primary" onClick={handleOpenModal}>
         Add New Journal
       </Button>
 
-      {/* Modal for adding a new journal */}
+     
       <Modal open={openModal} onClose={handleCloseModal}>
         <div className="modal-content" style={{ backgroundColor: '#fff', padding: '20px', borderRadius: '8px' }}>
-          {/* Form for adding a new journal */}
+       
           <Typography variant="h6" gutterBottom>Add New Journal</Typography>
           <TextField
             label="Title"
@@ -104,7 +104,7 @@ const JournalCollectionPage = ({ journalEntries }) => {
         </div>
       </Modal>
 
-      {/* Display journal cards */}
+   
       <Grid container spacing={3}>
         {journals.map(journal => (
           <Grid item key={journal.id} xs={12} sm={6} md={4}>
@@ -118,7 +118,7 @@ const JournalCollectionPage = ({ journalEntries }) => {
         ))}
       </Grid>
 
-      {/* MUI Alert */}
+      
       {alert && (
         <Alert severity={alert.type} onClose={() => setAlert(null)} sx={{ position: 'fixed', bottom: '20px', right: '20px', zIndex: 9999 }}>
           {alert.message}
