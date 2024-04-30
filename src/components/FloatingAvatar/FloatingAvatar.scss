@@ -1,0 +1,31 @@
+.floating-avatar {
+  background: url("../../assets/jackie.jpeg");
+  background-size: cover;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: #007bff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.hovered .hover-message {
+  display: block;
+}
+
+.hover-message {
+    text-align: center;
+  display: none;
+  position: absolute;
+  top: -30px;
+  left: -20px;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
