@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import Sidebar from '../../Components/sidebar/Sidebar'; 
+import Sidebar from '../../components/Sidebar/Sidebar'; 
 import axios from 'axios';
 
 const JournalPage = () => {
