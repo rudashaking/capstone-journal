@@ -1,39 +1,65 @@
 .header {
-  background-color: #28a99e; 
-  color: #fff; 
+  background: rgb(131, 58, 180);
+  background: linear-gradient(
+    90deg,
+    rgba(131, 58, 180, 1) 0%,
+    rgba(40, 169, 158, 1) 50%,
+    rgba(252, 176, 69, 1) 100%
+  );
+  color: #fff;
   height: 3rem;
   padding: 0 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   border-radius: 3px;
 }
 
-.header .title {
-  font-size: 1.5rem;
-  font-weight: bold;
-  letter-spacing: 1px; 
-  color: #ffa500; 
-}
-
-.header .avatar-container {
+.header__left-section {
   display: flex;
   align-items: center;
-  height: 100%;
 }
 
-img {
+.header__logo {
+  width: 2rem;
+  height: 2rem;
+  margin: 0 0.5rem;
+  border-radius: 50%;
+  background: url('../../assets/notitlelogo.png');
+  background-size: cover;
+}
+
+.header__text {
+  font-size: 1rem;
+  font-weight: bold;
+  margin-left: 1rem;
+}
+
+.header__right-section {
+  display: flex;
+  align-items: center;
+}
+
+.header__profile {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.header__profile-text {
+  margin-right: 0.5rem;
+}
+
+.header__profile-img {
   width: 2rem;
   height: 2rem;
   border-radius: 50%;
-  margin-right: 10px;
+  margin-left: 0.5rem;
+  background: url('../../assets/Mohan-muruge.jpg');
+  background-size: cover;
 }
 
-.header .avatar-container .username {
-  font-weight: bold;
-}
-
-.header .avatar-container img:hover {
-  transform: scale(1.1); 
+.header__profile-img:hover {
+  transform: scale(1.1);
 }

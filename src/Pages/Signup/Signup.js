@@ -27,7 +27,7 @@ const SignupPage = () => {
         setUsername('');
         setPassword('');
         setConfirmPassword('');
-        navigate('/avatarPick');
+        navigate('/users/:userId/avatar');
       }
     } catch (error) {
       setError(error.response.data.message);

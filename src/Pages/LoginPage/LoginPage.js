@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-
-import "../LoginPage/LoginPage.scss"
 import axios from 'axios'; 
 
 const LoginPage = () => {
@@ -10,36 +8,31 @@ const LoginPage = () => {
   const [error, setError] = useState('');
   const navigate = useNavigate();
 
-  const handleLogin = async (e) => {
-    e.preventDefault();
-    
+  const handleLogin = async (event) => {
+    event.preventDefault();
+  
     try {
-      const response = await axios.post('http://localhost:8080/login', { 
+      const response = await axios.post('http://localhost:8080/login', {
         username,
-        password
+        password,
       });
-      
-    
-      const token = response.data.token;
 
-    
+      const { token, userId, journals } = response.data;
+
       localStorage.setItem('token', token);
+      localStorage.setItem('userId', userId);
 
-    
-      axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-
-    
-      navigate('/journal-collection');
-    } catch (error) {
      
-      console.error('Login failed:', error.response.data.message);
-      setError('Invalid username or password');
+      navigate('/journal-collection/:id');
+    } catch (error) {
+      console.error('Error logging in:', error);
+      setError('Failed to log in. Please check your credentials and try again.');
     }
   };
 
   return (
     <div className="login-page">
-    
+      <div className='logo'></div>
       <form onSubmit={handleLogin}>
         <input
           type="text"
