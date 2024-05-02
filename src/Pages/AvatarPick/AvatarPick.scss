@@ -37,7 +37,15 @@
   .avatar-option.selected img {
     border-color: #007bff;
   }
-  
+  .bash{
+    background: url("../../assets/Bash.png");
+    background-size: cover;
+  }
+
+  .jackie{
+    background: url("../../assets/jackie.jpeg");
+    background-size: cover;
+  }
   .save-button {
     margin-top: 20px;
     padding: 10px 20px;

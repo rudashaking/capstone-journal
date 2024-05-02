@@ -1,39 +1,31 @@
-import React, { useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { useLocation, useParams } from 'react-router-dom'; 
 import logo from '../../assets/notitlelogo.png';
-import mohan from '../../assets/Mohan-muruge.jpg'
-import { useEffect } from 'react';
+import mohan from '../../assets/Mohan-muruge.jpg';
 import "./Header.scss";
 
 const Header = () => {
-  const [showSidebar, setShowSidebar] = useState(false);
-  const [username, setUsername] = useState(null); 
-  const [loading, setLoading] = useState(true); 
+  const [username, setUsername] = useState(null);
+  const [loading, setLoading] = useState(true);
   const location = useLocation();
+  const params = useParams(); 
 
-
-  const toggleSidebar = () => {
-    setShowSidebar(!showSidebar);
-  };
   useEffect(() => {
-   
-    const fetchUsername = async () => {
-      try {
-      
-        const response = await fetch('https://api.example.com/username');
-        const data = await response.json();
-        setUsername(data.username); 
-        setLoading(false);
-      } catch (error) {
-        console.error('Error fetching username:', error);
-        setLoading(false); 
-      }
-    };
+    fetchUsername();
+  }, []);
 
-    fetchUsername(); 
-  }, []); 
+  const fetchUsername = async () => {
+    try {
+      const response = await fetch(`https://localhost:8080/username/${params.username}`);
+      const data = await response.json();
+      setUsername(data.username);
+      setLoading(false);
+    } catch (error) {
+      console.error('Error fetching username:', error);
+      setLoading(false);
+    }
+  };
 
-  
   const getHeaderText = () => {
     if (location.pathname === '/') {
       return 'Welcome to Insightful';
@@ -45,13 +37,17 @@ const Header = () => {
   };
 
   return (
-    <div className="header"> Insightful
-      <div className="avatar" onClick={toggleSidebar}>
-        <img src={logo} alt="User Avatar" />
+    <div className="header">
+      <div className="header__left-section">
+        <div className="header__logo"></div>
+        <div className="header__title">Insightful</div>
+        <div className="header__text">{getHeaderText()}</div>
       </div>
-      <div className="header-text">{getHeaderText()}</div>
-      <div className="avatar" onClick={toggleSidebar}>
-        Profile <img src={mohan} alt="AI Avatar" />
+      <div className="header__right-section">
+        <div className="header__profile" >
+          <span className="header__profile-text">Profile</span>
+          <div className='header__profile-img'></div>
+        </div>
       </div>
     </div>
   );

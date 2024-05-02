@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
+import CircularProgress from '@mui/material/CircularProgress'; 
 import axios from 'axios';
-import CircularProgress from '@mui/material/CircularProgress';
-import './AvatarPick.scss'; 
+
 
 const AvatarPick = ({ updateUser }) => {
   const [user, setUser] = useState(null);
@@ -13,16 +13,23 @@ const AvatarPick = ({ updateUser }) => {
 
   const fetchUserData = async () => {
     try {
-      const response = await axios.get('/api/user');
+      const response = await axios.get('/users/:userId/avatar');
+      console.log('User data:', response.data);
       setUser(response.data);
       setSelectedAvatar(response.data.avatar || 'default'); 
     } catch (error) {
       console.error('Error fetching user data:', error);
     }
   };
+  
 
   const handleAvatarSelection = (avatar) => {
-    setSelectedAvatar(avatar);
+
+    if (avatar === 'jackie' || avatar === 'bash') {
+      setSelectedAvatar(avatar);
+    } else {
+      console.error('Invalid avatar selection');
+    }
   };
 
   const saveChanges = async () => {
@@ -32,7 +39,6 @@ const AvatarPick = ({ updateUser }) => {
       console.error('Error updating user data:', error);
     }
   };
-
   const updateProfilePicture = async (picture) => {
     try {
       await updateUser({ ...user, profilePicture: picture });
@@ -53,19 +59,13 @@ const AvatarPick = ({ updateUser }) => {
     <div className="settings-page">
       <h2 className="title">Avatar Selection</h2>
       <div className="avatar-options">
-      
-        <div onClick={() => handleAvatarSelection('male')} className={selectedAvatar === 'male' ? 'avatar-option selected' : 'avatar-option'}>
-          <img src={`https://avatars.dicebear.com/api/male/${user.username}.svg`} alt="Male Avatar" />
-          <p>Male</p>
+        <div onClick={() => handleAvatarSelection('jackie')} className={selectedAvatar === 'jackie' ? 'avatar-option selected' : 'avatar-option'}>
+        <div className="jackie"></div>
+          <p>Jackie</p>
         </div>
-        <div onClick={() => handleAvatarSelection('female')} className={selectedAvatar === 'female' ? 'avatar-option selected' : 'avatar-option'}>
-          <img src={`https://avatars.dicebear.com/api/female/${user.username}.svg`} alt="Female Avatar" />
-          <p>Female</p>
-        </div>
-      
-        <div onClick={() => handleAvatarSelection('default')} className={selectedAvatar === 'default' ? 'avatar-option selected' : 'avatar-option'}>
-          <img src={`https://avatars.dicebear.com/api/human/${user.username}.svg`} alt="Default Avatar" />
-          <p>Default</p>
+        <div onClick={() => handleAvatarSelection('bash')} className={selectedAvatar === 'bash' ? 'avatar-option selected' : 'avatar-option'}>
+          <div className="bash"></div>
+          <p>Bash</p>
         </div>
       </div>
       <button className="save-button" onClick={saveChanges}>Save Changes</button>
@@ -75,5 +75,4 @@ const AvatarPick = ({ updateUser }) => {
     </div>
   );
 };
-
 export default AvatarPick;

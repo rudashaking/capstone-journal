@@ -9,20 +9,14 @@ const Sidebar = ({ username }) => {
 
   const handleAiResponseChange = (event) => {
     setAiResponse(event.target.value);
-   
   };
 
   const startWebSpeechAI = () => {
     console.log("Starting Web Speech AI...");
-   
   };
 
   return (
-   <>
-        <div className="user-text">
-          <p>Welcome! {username}</p>
-        </div>
-
+    <div className="sidebar">
       <div className="calendar-reminder">
         <div className="calendar">
           <Calendar />
@@ -38,12 +32,12 @@ const Sidebar = ({ username }) => {
           />
         </div>
       </div>
-   </>
-
+    </div>
   );
 };
 
 export default Sidebar;
+
 
 
 

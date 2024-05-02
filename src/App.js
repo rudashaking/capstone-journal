@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import LoginPage from "./Pages/LoginPage/LoginPage";
 import SignupPage from "./Pages/Signup/Signup";
@@ -27,20 +27,21 @@ const App = () => {
           <Route path="/login" element={<LoginPage />} />
           <Route path="/signup" element={<SignupPage />} />
           <Route
-            path="/journal-collection"
+            path="/journal-collection/:id" 
             element={<JournalCollectionPage />}
           />
-          <Route path="/journal/:id" element={<JournalPage />} />
-          <Route path="/AvatarPick" element={<AvatarPick />} />
+          <Route
+            path="/journal/:id"
+            element={<JournalPage />}
+          />
+          <Route path="/users/:userId/avatar" element={<AvatarPick />} />
         </Routes>
 
-      
-        {["/journal-collection", "/journal/:id", "/AvatarPick"].includes(
-          window.location.pathname
-        ) && <Sidebar isOpen={isSidebarOpen} toggle={toggleSidebar} />}
+        {isSidebarOpen && (
+          <Sidebar isOpen={isSidebarOpen} toggle={toggleSidebar} />
+        )}
 
-      
-        {!["/login", "/signup"].includes(window.location.pathname) && (
+        {!["/login", "/signup", "/"].includes(window.location.pathname) && (
           <FloatingAvatar toggleSidebar={toggleSidebar} />
         )}
       </div>
