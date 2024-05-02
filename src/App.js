@@ -5,7 +5,6 @@ import SignupPage from "./Pages/Signup/Signup";
 import JournalCollectionPage from "./Pages/JournalCollection/JournalCollection";
 import JournalPage from "./Pages/JournalPage/JournalPage";
 import Header from "./components/Header/Header";
-import AvatarPick from "./Pages/AvatarPick/AvatarPick";
 import FloatingAvatar from "./components/FloatingAvatar/FloatingAvatar";
 import Sidebar from "./components/Sidebar/Sidebar";
 
@@ -30,11 +29,15 @@ const App = () => {
             path="/journal-collection/:id" 
             element={<JournalCollectionPage />}
           />
+<<<<<<< Updated upstream
           <Route
             path="/journal/:id"
             element={<JournalPage />}
           />
           <Route path="/users/:userId/avatar" element={<AvatarPick />} />
+=======
+          <Route path="/journal/:id" element={<JournalPage />} />
+>>>>>>> Stashed changes
         </Routes>
 
         {isSidebarOpen && (

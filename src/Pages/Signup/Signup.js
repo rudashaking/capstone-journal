@@ -27,7 +27,11 @@ const SignupPage = () => {
         setUsername('');
         setPassword('');
         setConfirmPassword('');
+<<<<<<< Updated upstream
         navigate('/users/:userId/avatar');
+=======
+        navigate('/journal-collection');
+>>>>>>> Stashed changes
       }
     } catch (error) {
       setError(error.response.data.message);
