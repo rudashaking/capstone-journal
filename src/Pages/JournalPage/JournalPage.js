@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
-
+import VoiceIn from "../../components/VoiceText/VoiceIn";
 import { Button, TextField } from '@mui/material';
 import './JournalPage.scss';
 
@@ -71,6 +71,10 @@ const JournalPage = () => {
     }
   };
 
+  const handleSpeechToTextResult = (result) => {
+    setNewEntryContent(result);
+  };
+
   return (
     <div className="journal-page">
       <div className="journal-content">
@@ -97,14 +101,17 @@ const JournalPage = () => {
               label="New Entry Title"
               value={newEntryTitle}
               onChange={e => setNewEntryTitle(e.target.value)}
-              fullWidth
+              sx={{width:375}}
             />
             <TextField
               label="New Entry Content"
               value={newEntryContent}
               onChange={e => setNewEntryContent(e.target.value)}
-              fullWidth
+              sx={{
+                width:375
+              }}
             />
+            <VoiceIn onResult={handleSpeechToTextResult} />
             <Button onClick={handleSubmitNewEntry} variant="contained" color="primary">
               Submit
             </Button>

@@ -1,7 +1,12 @@
 .journal-page {
     background:url("../../assets/papper.jpeg");
     background-size: cover;
-    height: 100vh;
+    height: 100%;
+    .css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input{
+      height: 100px;
+      text-align: start;
+      
+    }
     .journal-content {
       padding: 20px;
   
