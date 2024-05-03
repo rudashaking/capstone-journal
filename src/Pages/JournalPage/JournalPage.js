@@ -7,29 +7,26 @@ import './JournalPage.scss';
 
 const JournalPage = () => {
   const { userId, id } = useParams();
-  const [journal, setJournal] = useState(null);
-  const [entries, setEntries] = useState([]);
+  const [journalEntries, setJournalEntries] = useState([]);
   const [addingEntry, setAddingEntry] = useState(false);
   const [newEntryTitle, setNewEntryTitle] = useState('');
   const [newEntryContent, setNewEntryContent] = useState('');
 
+  useEffect(() => {
+    fetchJournalEntries();
+  }, [userId, id]); 
 
-
-  const fetchJournals = async () => {
+  const fetchJournalEntries = async () => {
     try {
       const token = localStorage.getItem('token');
-      const response = await axios.get(`http://localhost:8080/journals/${userId}`, {
+      const response = await axios.get(`http://localhost:8080/journals/${userId}/${id}/entries`, {
         headers: {
           Authorization: token ? `Bearer ${token}` : '',
         },
       });
-      console.log(response.data);
-    
-      if (response.data.entries) {
-        setEntries(response.data.entries); // Set the entries state if exists
-      }
+      setJournalEntries(response.data);
     } catch (error) {
-      console.error('Error fetching journal:', error);
+      console.error('Error fetching journal entries:', error);
     }
   };
 
@@ -47,7 +44,7 @@ const JournalPage = () => {
     try {
       const token = localStorage.getItem('token');
       const currentDate = new Date().toISOString();
-      const response = await axios.put(
+      const response = await axios.post(
         `http://localhost:8080/journals/${userId}/${id}/entries`,
         {
           title: newEntryTitle,
@@ -64,7 +61,7 @@ const JournalPage = () => {
         ...response.data,
         createdAt: new Date(response.data.createdAt).toLocaleString(),
       };
-      setEntries(prevEntries => [...prevEntries, newEntry]);
+      setJournalEntries(prevEntries => [...prevEntries, newEntry]);
       setNewEntryTitle('');
       setNewEntryContent('');
       setAddingEntry(false);
@@ -76,49 +73,43 @@ const JournalPage = () => {
   return (
     <div className="journal-page">
       <div className="journal-content">
-        {journal && (
-          <div>
-            <h2>{journal.title}</h2>
-            <p>{journal.description}</p>
-            {/* Render existing journal entries */}
-            <ul>
-              {entries.map(entry => (
-                <li key={entry.entryId}>
-                  <h3>{entry.title}</h3>
-                  <p>{entry.content}</p>
-                  <p>Created at: {entry.createdAt}</p>
-                </li>
-              ))}
-            </ul>
-            {/* Button to add a new entry */}
-            {!addingEntry && (
-              <Button variant="contained" color="primary" onClick={handleAddEntry}>
-                Add Entry
-              </Button>
-            )}
-            {/* Form for adding a new entry */}
-            {addingEntry && (
-              <div className="add-entry-form">
-                <TextField
-                  label="New Entry Title"
-                  value={newEntryTitle}
-                  onChange={e => setNewEntryTitle(e.target.value)}
-                  fullWidth
-                />
-                <TextField
-                  label="New Entry Content"
-                  value={newEntryContent}
-                  onChange={e => setNewEntryContent(e.target.value)}
-                  fullWidth
-                />
-                <Button onClick={handleSubmitNewEntry} variant="contained" color="primary">
-                  Submit
-                </Button>
-                <Button onClick={handleCancelAddEntry} variant="contained" color="secondary">
-                  Cancel
-                </Button>
-              </div>
-            )}
+        {/* Render existing journal entries */}
+        <ul>
+          {journalEntries.map((entry, index) => (
+            <li key={index}>
+              <h3>{entry.title}</h3>
+              <p>{entry.content}</p>
+              <p>Created at: {entry.createdAt}</p>
+            </li>
+          ))}
+        </ul>
+        {/* Button to add a new entry */}
+        {!addingEntry && (
+          <Button variant="contained" color="primary" onClick={handleAddEntry}>
+            Add Entry
+          </Button>
+        )}
+        {/* Form for adding a new entry */}
+        {addingEntry && (
+          <div className="add-entry-form">
+            <TextField
+              label="New Entry Title"
+              value={newEntryTitle}
+              onChange={e => setNewEntryTitle(e.target.value)}
+              fullWidth
+            />
+            <TextField
+              label="New Entry Content"
+              value={newEntryContent}
+              onChange={e => setNewEntryContent(e.target.value)}
+              fullWidth
+            />
+            <Button onClick={handleSubmitNewEntry} variant="contained" color="primary">
+              Submit
+            </Button>
+            <Button onClick={handleCancelAddEntry} variant="contained" color="secondary">
+              Cancel
+            </Button>
           </div>
         )}
       </div>

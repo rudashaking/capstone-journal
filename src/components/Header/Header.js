@@ -1,16 +1,31 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation, useParams } from 'react-router-dom'; 
-import logo from '../../assets/notitlelogo.png';
-import mohan from '../../assets/Mohan-muruge.jpg';
+import axios from 'axios'; // Import axios for making HTTP requests
 import "./Header.scss";
 
 const Header = () => {
   const [username, setUsername] = useState(null);
   const [loading, setLoading] = useState(true);
   const location = useLocation();
-  const params = useParams(); 
-
+  const userId = localStorage.getItem('userId');
  
+
+
+  useEffect(() => {
+    const fetchUsername = async () => {
+      try {
+        const response = await axios.get(`http://localhost:8080/users/${userId}`); 
+        console.log(response.data); 
+        
+        setUsername(response.data.username);
+        setLoading(false);
+      } catch (error) {
+        console.error('Error fetching username:', error);
+      }
+    };
+
+    fetchUsername();
+  }, [userId]);
 
   const getHeaderText = () => {
     if (location.pathname === '/') {
@@ -27,7 +42,7 @@ const Header = () => {
       <div className="header__left-section">
         <div className="header__logo"></div>
         <div className="header__title">Insightful</div>
-        <div className="header__text">{getHeaderText()}</div>
+        <div className="header__text">{loading ? 'Loading...' : getHeaderText()}</div>
       </div>
       <div className="header__right-section">
         <div className="header__profile" >
