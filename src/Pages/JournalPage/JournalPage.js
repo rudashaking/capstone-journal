@@ -1,32 +1,35 @@
-import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
-import axios from 'axios';
+import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import axios from "axios";
 import VoiceIn from "../../components/VoiceText/VoiceIn";
-import { Button, TextField } from '@mui/material';
-import './JournalPage.scss';
+import { Button, TextField } from "@mui/material";
+import "./JournalPage.scss";
 
 const JournalPage = () => {
   const { userId, id } = useParams();
   const [journalEntries, setJournalEntries] = useState([]);
   const [addingEntry, setAddingEntry] = useState(false);
-  const [newEntryTitle, setNewEntryTitle] = useState('');
-  const [newEntryContent, setNewEntryContent] = useState('');
+  const [newEntryTitle, setNewEntryTitle] = useState("");
+  const [newEntryContent, setNewEntryContent] = useState("");
 
   useEffect(() => {
     fetchJournalEntries();
-  }, [userId, id]); 
+  }, [userId, id]);
 
   const fetchJournalEntries = async () => {
     try {
-      const token = localStorage.getItem('token');
-      const response = await axios.get(`http://localhost:8080/journals/${userId}/${id}/entries`, {
-        headers: {
-          Authorization: token ? `Bearer ${token}` : '',
-        },
-      });
+      const token = localStorage.getItem("token");
+      const response = await axios.get(
+        `http://localhost:8080/journals/${userId}/${id}/entries`,
+        {
+          headers: {
+            Authorization: token ? `Bearer ${token}` : "",
+          },
+        }
+      );
       setJournalEntries(response.data);
     } catch (error) {
-      console.error('Error fetching journal entries:', error);
+      console.error("Error fetching journal entries:", error);
     }
   };
 
@@ -36,13 +39,13 @@ const JournalPage = () => {
 
   const handleCancelAddEntry = () => {
     setAddingEntry(false);
-    setNewEntryTitle('');
-    setNewEntryContent('');
+    setNewEntryTitle("");
+    setNewEntryContent("");
   };
 
   const handleSubmitNewEntry = async () => {
     try {
-      const token = localStorage.getItem('token');
+      const token = localStorage.getItem("token");
       const currentDate = new Date().toISOString();
       const response = await axios.put(
         `http://localhost:8080/journals/${userId}/${id}/entries`,
@@ -53,7 +56,7 @@ const JournalPage = () => {
         },
         {
           headers: {
-            Authorization: token ? `Bearer ${token}` : '',
+            Authorization: token ? `Bearer ${token}` : "",
           },
         }
       );
@@ -61,13 +64,13 @@ const JournalPage = () => {
         ...response.data,
         createdAt: new Date(response.data.createdAt).toLocaleString(),
       };
-      setJournalEntries(prevEntries => [...prevEntries, newEntry]);
-      setNewEntryTitle('');
-      setNewEntryContent('');
+      setJournalEntries((prevEntries) => [...prevEntries, newEntry]);
+      setNewEntryTitle("");
+      setNewEntryContent("");
       setAddingEntry(false);
       await fetchJournalEntries();
     } catch (error) {
-      console.error('Error adding new entry:', error);
+      console.error("Error adding new entry:", error);
     }
   };
 
@@ -100,22 +103,33 @@ const JournalPage = () => {
             <TextField
               label="New Entry Title"
               value={newEntryTitle}
-              onChange={e => setNewEntryTitle(e.target.value)}
-              sx={{width:375}}
+              onChange={(e) => setNewEntryTitle(e.target.value)}
+              sx={{ width: 375 }}
             />
             <TextField
               label="New Entry Content"
               value={newEntryContent}
-              onChange={e => setNewEntryContent(e.target.value)}
+              onChange={(e) => setNewEntryContent(e.target.value)}
+              multiline 
+              maxRows={10} 
               sx={{
-                width:375
+                width: 375,
               }}
             />
+            
             <VoiceIn onResult={handleSpeechToTextResult} />
-            <Button onClick={handleSubmitNewEntry} variant="contained" color="primary">
+            <Button
+              onClick={handleSubmitNewEntry}
+              variant="contained"
+              color="primary"
+            >
               Submit
             </Button>
-            <Button onClick={handleCancelAddEntry} variant="contained" color="secondary">
+            <Button
+              onClick={handleCancelAddEntry}
+              variant="contained"
+              color="secondary"
+            >
               Cancel
             </Button>
           </div>

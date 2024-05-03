@@ -3,9 +3,10 @@
     background-size: cover;
     height: 100%;
     .css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input{
-      height: 100px;
+   
       text-align: start;
-      
+      word-wrap: normal;
+      overflow-y: auto;
     }
     .journal-content {
       padding: 20px;
