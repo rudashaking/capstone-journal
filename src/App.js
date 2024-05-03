@@ -30,10 +30,8 @@ const App = () => {
             element={<JournalCollectionPage />}
           />
       
-          <Route 
-            path="/journal/:id/entries" 
-            element={<JournalPage />} 
-          />
+      <Route path="/journal/:userId/:id/entries" element={<JournalPage/>} />
+
         </Routes>
 
         {isSidebarOpen && (
