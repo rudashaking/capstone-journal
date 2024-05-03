@@ -44,7 +44,7 @@ const JournalPage = () => {
     try {
       const token = localStorage.getItem('token');
       const currentDate = new Date().toISOString();
-      const response = await axios.post(
+      const response = await axios.put(
         `http://localhost:8080/journals/${userId}/${id}/entries`,
         {
           title: newEntryTitle,
@@ -65,6 +65,7 @@ const JournalPage = () => {
       setNewEntryTitle('');
       setNewEntryContent('');
       setAddingEntry(false);
+      await fetchJournalEntries();
     } catch (error) {
       console.error('Error adding new entry:', error);
     }
