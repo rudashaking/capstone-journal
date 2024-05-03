@@ -19,24 +19,23 @@ const SignupPage = () => {
       setError("Passwords don't match");
       return;
     }
-
+  
     try {
       const response = await axios.post('http://localhost:8080/signup', { username, password });
       if (response.status === 201) {
+        const userId = response.data.userId; 
+        localStorage.setItem('userId', userId); 
         setSuccess(true);
         setUsername('');
         setPassword('');
         setConfirmPassword('');
-<<<<<<< Updated upstream
-        navigate('/users/:userId/avatar');
-=======
-        navigate('/journal-collection');
->>>>>>> Stashed changes
+        navigate(`/journal-collection/${userId}`); 
       }
     } catch (error) {
       setError(error.response.data.message);
     }
   };
+  
 
   const handleCloseModal = () => {
     setSuccess(false);

@@ -1,30 +1,44 @@
-import React, { useState, useEffect } from 'react';
-import { Card, CardContent, Typography, Grid, Button, Modal, TextField, Alert } from '@mui/material';
-import axios from 'axios';
-import "./JournalCollection.scss"
+import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom"; // Import Link
+import {
+  Card,
+  CardContent,
+  Typography,
+  Grid,
+  Button,
+  Modal,
+  TextField,
+  Alert,
+} from "@mui/material";
+import axios from "axios";
+import "./JournalCollection.scss";
 
 const JournalCollectionPage = () => {
   const [openModal, setOpenModal] = useState(false);
-  const [title, setTitle] = useState('');
-  const [description, setDescription] = useState('');
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
   const [alert, setAlert] = useState(null);
   const [journals, setJournals] = useState([]);
 
   useEffect(() => {
     fetchJournals();
   }, []);
-console.log(localStorage);
+
   const fetchJournals = async () => {
     try {
-      const token = localStorage.getItem('token');
-      const response = await axios.get('http://localhost:8080/journals/:id', {
-        headers: {
-          Authorization: token ? `Bearer ${token}` : '',
-        },
-      });
+      const token = localStorage.getItem("token");
+      const userId = localStorage.getItem("userId");
+      const response = await axios.get(
+        `http://localhost:8080/journals/${userId}`,
+        {
+          headers: {
+            Authorization: token ? `Bearer ${token}` : "",
+          },
+        }
+      );
       setJournals(response.data);
     } catch (error) {
-      console.error('Error fetching journals:', error);
+      console.error("Error fetching journals:", error);
     }
   };
 
@@ -38,24 +52,29 @@ console.log(localStorage);
 
   const handleAddJournal = async () => {
     try {
-      const token = localStorage.getItem('token');
-      const response = await axios.post('http://localhost:8080/journals/:id', {
-        title,
-        description: description || null,
-        content: [], 
-      }, {
-        headers: {
-          Authorization: token ? `Bearer ${token}` : '',
+      const token = localStorage.getItem("token");
+      const userId = localStorage.getItem("userId");
+      const response = await axios.post(
+        `http://localhost:8080/journals/${userId}`,
+        {
+          title,
+          description: description || null,
+          content: [],
+        },
+        {
+          headers: {
+            Authorization: token ? `Bearer ${token}` : "",
+          },
         }
-      });
-      setTitle('');
-      setDescription('');
+      );
+      setTitle("");
+      setDescription("");
       handleCloseModal();
-      setJournals([...journals, response.data.journal]); 
-      setAlert({ type: 'success', message: 'Journal added successfully' });
+      setJournals([...journals, response.data.journal]);
+      setAlert({ type: "success", message: "Journal added successfully" });
     } catch (error) {
-      console.error('Error adding journal:', error);
-      setAlert({ type: 'error', message: 'Failed to add journal' });
+      console.error("Error adding journal:", error);
+      setAlert({ type: "error", message: "Failed to add journal" });
     }
   };
 
@@ -66,8 +85,17 @@ console.log(localStorage);
       </Button>
 
       <Modal open={openModal} onClose={handleCloseModal}>
-        <div className="modal-content" style={{ backgroundColor: '#fff', padding: '20px', borderRadius: '8px' }}>
-          <Typography variant="h6" gutterBottom>Add New Journal</Typography>
+        <div
+          className="modal-content"
+          style={{
+            backgroundColor: "#fff",
+            padding: "20px",
+            borderRadius: "8px",
+          }}
+        >
+          <Typography variant="h6" gutterBottom>
+            Add New Journal
+          </Typography>
           <TextField
             label="Title"
             variant="outlined"
@@ -86,27 +114,45 @@ console.log(localStorage);
             onChange={(e) => setDescription(e.target.value)}
             margin="normal"
           />
-          <Button variant="contained" color="primary" onClick={handleAddJournal}>
+          <Button
+            variant="contained"
+            color="primary"
+            onClick={handleAddJournal}
+          >
             Add
           </Button>
         </div>
       </Modal>
 
       <Grid container spacing={3}>
-        {journals.map(journal => (
-          <Grid item key={journal.id} xs={12} sm={6} md={4}>
-            <Card>
-              <CardContent>
-                <Typography variant="h5">{journal.title}</Typography>
-                <Typography variant="body2">{journal.description}</Typography>
-              </CardContent>
-            </Card>
+        {journals.map((journal) => (
+          <Grid item key={journal.journalId} xs={12} sm={3} md={3}>
+            <Link
+              to={`/journal/${journal.journalId}/entries`}
+              style={{ textDecoration: "none" }}
+            >
+              <Card>
+                <CardContent>
+                  <Typography variant="h5">{journal.title}</Typography>
+                  <Typography variant="body2">{journal.description}</Typography>
+                </CardContent>
+              </Card>
+            </Link>
           </Grid>
         ))}
       </Grid>
 
       {alert && (
-        <Alert severity={alert.type} onClose={() => setAlert(null)} sx={{ position: 'fixed', bottom: '20px', right: '20px', zIndex: 9999 }}>
+        <Alert
+          severity={alert.type}
+          onClose={() => setAlert(null)}
+          sx={{
+            position: "fixed",
+            bottom: "20px",
+            right: "20px",
+            zIndex: 9999,
+          }}
+        >
           {alert.message}
         </Alert>
       )}
