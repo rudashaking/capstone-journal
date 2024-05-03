@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import LoginPage from "./Pages/LoginPage/LoginPage";
 import SignupPage from "./Pages/Signup/Signup";
@@ -19,7 +19,7 @@ const App = () => {
     <Router>
       <div className="app">
         {!["/login", "/signup", "/"].includes(window.location.pathname) && (
-          <Header />
+          <Header toggleSidebar={toggleSidebar} />
         )}
         <Routes>
           <Route path="/" element={<LoginPage />} />
@@ -29,15 +29,11 @@ const App = () => {
             path="/journal-collection/:id" 
             element={<JournalCollectionPage />}
           />
-<<<<<<< Updated upstream
-          <Route
-            path="/journal/:id"
-            element={<JournalPage />}
+      
+          <Route 
+            path="/journal/:id/entries" 
+            element={<JournalPage />} 
           />
-          <Route path="/users/:userId/avatar" element={<AvatarPick />} />
-=======
-          <Route path="/journal/:id" element={<JournalPage />} />
->>>>>>> Stashed changes
         </Routes>
 
         {isSidebarOpen && (

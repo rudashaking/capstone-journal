@@ -13,17 +13,17 @@
 .calendar-reminder {
   display: flex;
   flex-direction: column;
-  gap: 1rem; /* Adds a gap of 1rem between flex items */
+  gap: 1rem; 
 }
 
 .calendar,
 .reminder,
 .ai-response {
-  width: 100%; /* Set width to 100% to occupy full width within the column */
+  width: 100%;  
 }
 
 textarea {
-  width:295px; /* Set width to 100% to occupy full width */
+  width:295px; 
   height: 100px;
   padding: 10px;
   border: 1px solid #ccc;

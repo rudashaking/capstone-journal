@@ -16,19 +16,22 @@ const LoginPage = () => {
         username,
         password,
       });
-
-      const { token, userId, journals } = response.data;
-
+  
+      const { token, userId } = response.data;
+  
       localStorage.setItem('token', token);
       localStorage.setItem('userId', userId);
-
-     
-      navigate('/journal-collection/:id');
+  
+      // Use the userId directly without redeclaring it
+      console.log('userId', userId); 
+  
+      navigate(`/journal-collection/${userId}`);
     } catch (error) {
       console.error('Error logging in:', error);
       setError('Failed to log in. Please check your credentials and try again.');
     }
   };
+  
 
   return (
     <div className="login-page">

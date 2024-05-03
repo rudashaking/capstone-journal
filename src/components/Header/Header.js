@@ -10,21 +10,7 @@ const Header = () => {
   const location = useLocation();
   const params = useParams(); 
 
-  useEffect(() => {
-    fetchUsername();
-  }, []);
-
-  const fetchUsername = async () => {
-    try {
-      const response = await fetch(`https://localhost:8080/username/${params.username}`);
-      const data = await response.json();
-      setUsername(data.username);
-      setLoading(false);
-    } catch (error) {
-      console.error('Error fetching username:', error);
-      setLoading(false);
-    }
-  };
+ 
 
   const getHeaderText = () => {
     if (location.pathname === '/') {
