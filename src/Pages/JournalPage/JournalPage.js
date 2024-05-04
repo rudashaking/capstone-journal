@@ -23,7 +23,7 @@ const JournalPage = () => {
     try {
       const token = localStorage.getItem("token");
       const response = await axios.get(
-        `http://localhost:8080/journals/${userId}/${id}/entries`,
+        `http:
         {
           headers: {
             Authorization: token ? `Bearer ${token}` : "",
@@ -51,7 +51,7 @@ const JournalPage = () => {
       const token = localStorage.getItem("token");
       const currentDate = new Date().toISOString();
       const response = await axios.put(
-        `http://localhost:8080/journals/${userId}/${id}/entries`,
+        `http:
         {
           title: newEntryTitle,
           content: newEntryContent,
@@ -79,13 +79,13 @@ const JournalPage = () => {
 
   const handleSpeechToTextResult = (result) => {
     setSpeechToTextResult(result);
-    setNewEntryContent(result); // Update the newEntryContent state as well
+    setNewEntryContent(result); 
   };
 
   return (
     <div className="journal-page">
       <div className="journal-content">
-        {/* Render existing journal entries */}
+     
         <ul>
           {journalEntries.map((entry, index) => (
             <li key={index}>
@@ -95,7 +95,7 @@ const JournalPage = () => {
             </li>
           ))}
         </ul>
-        {/* Button to add a new entry */}
+       
         {!addingEntry && (
           <Button
             variant="contained"
@@ -105,7 +105,7 @@ const JournalPage = () => {
             Add Entry
           </Button>
         )}
-        {/* Form for adding a new entry */}
+        
         {addingEntry && (
           <div className="add-entry-form">
             <TextField

@@ -37,12 +37,12 @@ const VoiceIn = ({ onResult }) => {
       for (let i = event.resultIndex; i < event.results.length; i++) {
         const transcript = event.results[i][0].transcript;
         if (event.results[i].isFinal) {
-          newFinalTranscript += transcript + ' '; // Concatenate the new transcription
+          newFinalTranscript += transcript + ' '; 
         }
       }
     
-      setTranscription(prevTranscription => prevTranscription + newFinalTranscript); // Append the new transcription
-      onResult(prevTranscription => prevTranscription + newFinalTranscript); // Pass the transcription to the parent component
+      setTranscription(prevTranscription => prevTranscription + newFinalTranscript); 
+      onResult(prevTranscription => prevTranscription + newFinalTranscript); 
     };
     
     recognition.current.onerror = (event) => {

@@ -1,3 +1,161 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+  
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 import React, { useState } from 'react';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
@@ -27,44 +185,48 @@ const MoodAnalyzer = ({ newFinalTranscript }) => {
       Relaxed: ['relaxed', 'chilled', 'easygoing', 'laid-back', 'unhurried', 'placid', 'unruffled', 'serene', 'mellow', 'tranquil', 'calm', 'composed', 'leisurely', 'at ease', 'peaceful', 'restful', 'undemanding', 'carefree', 'untroubled', 'casual'],
       Surprised: ['surprised', 'astonished', 'amazed', 'stunned', 'shocked', 'dumbfounded', 'flabbergasted', 'taken aback', 'bewildered', 'astounded', 'gobsmacked', 'startled', 'awe-struck', 'speechless', 'flummoxed', 'aghast', 'floored', 'disbelieving', 'staggered', 'unbelieving']
     };
-    
-  
+
     const moodScores = {
       Happy: 0,
       Sad: 0,
       Angry: 0,
       Neutral: 0,
+      Excited: 0,
+      Relaxed: 0,
+      Surprised: 0,
     };
-  
-    // Convert transcript to lowercase for case-insensitive matching
+
+    
     const transcriptLowercase = transcript.toLowerCase();
-  
-    // Iterate through mood words and count occurrences in the transcript
+
+    
     for (const mood in moodWords) {
       moodWords[mood].forEach((word) => {
-        if (transcriptLowercase.includes(word)) {
-          moodScores[mood]++;
+        const regex = new RegExp(`\\b${word}\\b`, 'gi'); 
+        const matches = transcriptLowercase.match(regex);
+        if (matches) {
+          moodScores[mood] += matches.length; 
         }
       });
     }
-  
-    // Determine the mood with the highest score
+
+    
     let maxScore = -1;
     let analyzedMood = 'Neutral';
-  
+
     for (const mood in moodScores) {
       if (moodScores[mood] > maxScore) {
         maxScore = moodScores[mood];
         analyzedMood = mood;
       }
     }
-  
+
     return analyzedMood;
   };
 
   const fetchMoodHelperData = async (mood) => {
     try {
-      const response = await axios.get(`http://localhost:8080/moods/${mood}`);
+      const response = await axios.get(`http:
       return response.data;
     } catch (error) {
       console.error('Error fetching mood helper data:', error);
@@ -84,7 +246,6 @@ const MoodAnalyzer = ({ newFinalTranscript }) => {
       setOpenSnackbar(true);
     }
   };
-  
 
   return (
     <div>
