@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom"; // Import Link
+import "./JournalCollection.scss"
 import {
   Card,
   CardContent,
@@ -14,6 +15,8 @@ import axios from "axios";
 import "./JournalCollection.scss";
 
 const JournalCollectionPage = () => {
+  
+  const userId = localStorage.getItem("userId");
   const [openModal, setOpenModal] = useState(false);
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
@@ -36,6 +39,7 @@ const JournalCollectionPage = () => {
           },
         }
       );
+      console.log(response.data);
       setJournals(response.data);
     } catch (error) {
       console.error("Error fetching journals:", error);
@@ -126,9 +130,12 @@ const JournalCollectionPage = () => {
 
       <Grid container spacing={3}>
         {journals.map((journal) => (
-          <Grid item key={journal.journalId} xs={12} sm={3} md={3}>
+         
+          <Grid item key={journal.id} xs={12} sm={3} md={3}>
+                
             <Link
-              to={`/journal/${journal.journalId}/entries`}
+            
+              to={`/journal/${userId}/${journal.id}/entries`}
               style={{ textDecoration: "none" }}
             >
               <Card>

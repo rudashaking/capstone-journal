@@ -1,8 +1,7 @@
 import React, { useState, useRef } from 'react';
 import Button from '@mui/material/Button';
-import MoodAnalyzer from './MoodAnalyzer';
 
-const VoiceIn = () => {
+const VoiceIn = ({ onResult }) => {
   const [transcription, setTranscription] = useState('');
   const [listening, setListening] = useState(false);
   const recognition = useRef(null);
@@ -16,7 +15,7 @@ const VoiceIn = () => {
 
     recognition.current = new window.webkitSpeechRecognition();
     recognition.current.continuous = true;
-    recognition.current.interimResults = false; 
+    recognition.current.interimResults = false;
     recognition.current.lang = 'en-US';
 
     recognition.current.onstart = () => {
@@ -32,19 +31,20 @@ const VoiceIn = () => {
       silenceTimeout.current = setTimeout(() => {
         stopListening();
       }, 4000);
-
+    
       let newFinalTranscript = '';
-
+    
       for (let i = event.resultIndex; i < event.results.length; i++) {
         const transcript = event.results[i][0].transcript;
         if (event.results[i].isFinal) {
-          newFinalTranscript += transcript + ' ';
+          newFinalTranscript += transcript + ' '; 
         }
       }
-
-      setTranscription(prevTranscription => prevTranscription + newFinalTranscript);
+    
+      setTranscription(prevTranscription => prevTranscription + newFinalTranscript); 
+      onResult(prevTranscription => prevTranscription + newFinalTranscript); 
     };
-
+    
     recognition.current.onerror = (event) => {
       console.error('Speech recognition error:', event.error);
       stopListening();
@@ -65,17 +65,10 @@ const VoiceIn = () => {
   };
 
   return (
-    <div className="container">
-      <h1>Voice Input</h1>
-      <div className="controls">
-        <Button onClick={listening ? stopListening : startListening} variant="contained" color="primary">
-          {listening ? 'Stop Listening' : 'Start Listening'}
-        </Button>
-      </div>
-      <div className="transcription">
-        <p className="final">{transcription}</p>
-      </div>
-      <MoodAnalyzer transcript={transcription} />
+    <div className="controls">
+      <Button onClick={listening ? stopListening : startListening} variant="contained" color="primary">
+        {listening ? 'Stop Listening' : 'Start Listening'}
+      </Button>
     </div>
   );
 };

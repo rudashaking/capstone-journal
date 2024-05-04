@@ -10,7 +10,7 @@ import Sidebar from "./components/Sidebar/Sidebar";
 
 const App = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-
+  const [userId, setUserId] = useState(null);
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
@@ -18,9 +18,10 @@ const App = () => {
   return (
     <Router>
       <div className="app">
-        {!["/login", "/signup", "/"].includes(window.location.pathname) && (
-          <Header toggleSidebar={toggleSidebar} />
-        )}
+      {!["/login", "/signup", "/"].includes(window.location.pathname) && (
+  <Header userId={userId} toggleSidebar={toggleSidebar} />
+)}
+
         <Routes>
           <Route path="/" element={<LoginPage />} />
           <Route path="/login" element={<LoginPage />} />
@@ -30,10 +31,8 @@ const App = () => {
             element={<JournalCollectionPage />}
           />
       
-          <Route 
-            path="/journal/:id/entries" 
-            element={<JournalPage />} 
-          />
+      <Route path="/journal/:userId/:id/entries" element={<JournalPage/>} />
+
         </Routes>
 
         {isSidebarOpen && (

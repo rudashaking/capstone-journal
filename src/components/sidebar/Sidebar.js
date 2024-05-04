@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 import './sidebar.scss';
 import Calendar from '../Calendar/Calendar';
 import Reminder from '../Reminders/Reminder';
-import MoodAnalyzer from '../../components/VoiceText/MoodAnalyzer';
+import MoodAnalyzer from '../../components/Moodanalyzer/MoodAnalyzer';
 import TextareaAutosize from '@mui/material/TextareaAutosize';
 
-const Sidebar = ({ username }) => {
+const Sidebar = ({ newFinalTranscript}) => {
   const [aiResponse, setAiResponse] = useState('');
 
   const handleAiResponseChange = (event) => {
@@ -22,17 +22,7 @@ const Sidebar = ({ username }) => {
           <div className="reminder">
             <Reminder />
           </div>
-          <div className="ai-response">
-            <TextareaAutosize
-              value={aiResponse}
-              onChange={handleAiResponseChange}
-              placeholder="Type your AI response here..."
-              minRows={1} 
-              maxRows={3} 
-              style={{ width: '100%' }}
-            />
-            <MoodAnalyzer transcript={aiResponse} />
-          </div>
+         
         </div>
       </div>
     </>
