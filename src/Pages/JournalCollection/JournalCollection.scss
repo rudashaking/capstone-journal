@@ -2,10 +2,17 @@
     padding: 20px;
     width:96%;
     height: 61.875rem;
-    background-color: #f9f9f9;
+    background-color: #d6c31d5c;
     border-radius: 3px;
+
+    .css-sghohy-MuiButtonBase-root-MuiButton-root{
+      height: 250px;
+      width: 160px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+      margin-top: 1rem;
+    }
     .MuiCard-root {
-      height: 100%;
+      height: 250px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -13,7 +20,7 @@
       color: #f9f9f9;
       border: 1px solid #dddddd;
       border-radius: 8px;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
     }
   
     .MuiCardContent-root {

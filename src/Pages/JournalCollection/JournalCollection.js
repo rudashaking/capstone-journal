@@ -84,9 +84,7 @@ const JournalCollectionPage = () => {
 
   return (
     <div className="journal-collection-page">
-      <Button variant="contained" color="primary" onClick={handleOpenModal}>
-        Add New Journal
-      </Button>
+     
 
       <Modal open={openModal} onClose={handleCloseModal}>
         <div
@@ -148,7 +146,9 @@ const JournalCollectionPage = () => {
           </Grid>
         ))}
       </Grid>
-
+      <Button variant="contained" color="primary" onClick={handleOpenModal}>
+        Add New Journal
+      </Button>
       {alert && (
         <Alert
           severity={alert.type}
