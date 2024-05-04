@@ -4,11 +4,11 @@ import '../Calendar/Calendar.scss';
 const Calendar = () => {
   const [selectedDate, setSelectedDate] = useState(new Date());
 
-  // Hardcoded journal entry dates for demonstration
+ 
   const submittedDates = [
-    new Date(2024, 4, 2), // May 2nd, 2024
-    new Date(2024, 4, 10), // May 10th, 2024
-    new Date(2024, 4, 15), // May 15th, 2024
+    new Date(2024, 4, 2), 
+    new Date(2024, 4, 10), 
+    new Date(2024, 4, 15), 
   ];
 
   const reminders = [
@@ -26,7 +26,7 @@ const Calendar = () => {
     const firstDayOfMonth = new Date(selectedDate.getFullYear(), selectedDate.getMonth(), 1).getDay();
     const calendarArray = [];
   
-    // Extract reminder dates from reminders array
+   
     const reminderDates = reminders.map(reminder => new Date(reminder.date));
   
     for (let i = 0; i < firstDayOfMonth; i++) {

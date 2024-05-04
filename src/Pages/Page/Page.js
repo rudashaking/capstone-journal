@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './Page.scss';
-import Sidebar from '../../Components/sidebar/Sidebar'; 
+
 
 const JournalPage = () => {
   const [title, setTitle] = useState('');

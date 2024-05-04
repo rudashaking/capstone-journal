@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation, useParams } from 'react-router-dom'; 
-import axios from 'axios'; // Import axios for making HTTP requests
+import axios from 'axios';
 import "./Header.scss";
 
 const Header = () => {

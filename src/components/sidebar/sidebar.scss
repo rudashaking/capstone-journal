@@ -18,8 +18,9 @@
 
 .calendar,
 .reminder,
-.ai-response {
+.mood-analyzer-instructions{
   width: 100%;  
+  overflow-y:unset;
 }
 
 textarea {

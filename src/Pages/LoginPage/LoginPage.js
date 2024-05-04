@@ -22,7 +22,7 @@ const LoginPage = () => {
       localStorage.setItem('token', token);
       localStorage.setItem('userId', userId);
   
-      // Use the userId directly without redeclaring it
+      
       console.log('userId', userId); 
   
       navigate(`/journal-collection/${userId}`);

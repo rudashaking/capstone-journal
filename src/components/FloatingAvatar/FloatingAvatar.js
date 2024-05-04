@@ -1,19 +1,24 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './FloatingAvatar.scss'; 
-import { useState, } from 'react';
 import { useLocation } from 'react-router-dom';
+import MuiAlert from '@mui/material/Alert';
 
 const FloatingAvatar = ({ toggleSidebar }) => {
     const [isHovered, setIsHovered] = useState(false);
+    const [isAlertShown, setIsAlertShown] = useState(false);
     const location = useLocation();
     const [hoverMessage, setHoverMessage] = useState('Click Me');
-    const handleMouseOver = () => {
-        setIsHovered(true);
+
+    useEffect(() => {
         if (location.pathname === '/login' || location.pathname === '/') {
             setHoverMessage('Sign In First');
         } else {
-            setHoverMessage('Ready To Listen');
+            setHoverMessage('click for more');
         }
+    }, [location.pathname]);
+
+    const handleMouseOver = () => {
+        setIsHovered(true);
     }
 
     const handleMouseOut = () => {
@@ -26,13 +31,25 @@ const FloatingAvatar = ({ toggleSidebar }) => {
         }
     }
 
+    useEffect(() => {
+        setIsAlertShown(location.pathname === '/journal');
+    }, []);
+
     return (
         <div className={`floating-avatar ${isHovered ? 'hovered' : ''}`} 
              onMouseOver={handleMouseOver}
              onMouseOut={handleMouseOut}
              onClick={handleClick}>
-{isHovered && <div className="hover-message">{hoverMessage}</div>}
-    
+            {isHovered && <div className="hover-message">{hoverMessage}</div>}
+            {isAlertShown && (
+                <MuiAlert
+                    severity="info"
+                    onClose={() => setIsAlertShown(false)}
+                    sx={{ position: 'fixed', top: '20px', left: '20px', zIndex: 9999 }}
+                >
+                    Hi, I'm Jackie here to help
+                </MuiAlert>
+            )}
         </div>
     );
 }
