@@ -1,8 +1,10 @@
+
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import VoiceIn from "../../components/VoiceText/VoiceIn";
 import { Button, TextField } from "@mui/material";
+import MoodAnalyzer from "../../components/Moodanalyzer/MoodAnalyzer";
 import "./JournalPage.scss";
 
 const JournalPage = () => {
@@ -11,6 +13,7 @@ const JournalPage = () => {
   const [addingEntry, setAddingEntry] = useState(false);
   const [newEntryTitle, setNewEntryTitle] = useState("");
   const [newEntryContent, setNewEntryContent] = useState("");
+  const [speechToTextResult, setSpeechToTextResult] = useState("");
 
   useEffect(() => {
     fetchJournalEntries();
@@ -75,7 +78,8 @@ const JournalPage = () => {
   };
 
   const handleSpeechToTextResult = (result) => {
-    setNewEntryContent(result);
+    setSpeechToTextResult(result);
+    setNewEntryContent(result); // Update the newEntryContent state as well
   };
 
   return (
@@ -93,7 +97,11 @@ const JournalPage = () => {
         </ul>
         {/* Button to add a new entry */}
         {!addingEntry && (
-          <Button variant="contained" color="primary" onClick={handleAddEntry}>
+          <Button
+            variant="contained"
+            color="primary"
+            onClick={handleAddEntry}
+          >
             Add Entry
           </Button>
         )}
@@ -110,14 +118,14 @@ const JournalPage = () => {
               label="New Entry Content"
               value={newEntryContent}
               onChange={(e) => setNewEntryContent(e.target.value)}
-              multiline 
-              maxRows={10} 
+              multiline
+              maxRows={10}
               sx={{
                 width: 375,
               }}
             />
-            
             <VoiceIn onResult={handleSpeechToTextResult} />
+            <MoodAnalyzer newFinalTranscript={speechToTextResult} />
             <Button
               onClick={handleSubmitNewEntry}
               variant="contained"

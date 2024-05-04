@@ -15,7 +15,7 @@ const Header = () => {
     const fetchUsername = async () => {
       try {
         const response = await axios.get(`http://localhost:8080/users/${userId}`); 
-        console.log(response.data); 
+      
         
         setUsername(response.data.username);
         setLoading(false);
