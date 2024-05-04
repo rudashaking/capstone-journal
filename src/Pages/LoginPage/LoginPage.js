@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios'; 
+import "./LoginPage.scss";
 
 const LoginPage = () => {
   const [username, setUsername] = useState('');
@@ -22,7 +23,6 @@ const LoginPage = () => {
       localStorage.setItem('token', token);
       localStorage.setItem('userId', userId);
   
-      
       console.log('userId', userId); 
   
       navigate(`/journal-collection/${userId}`);
@@ -31,28 +31,29 @@ const LoginPage = () => {
       setError('Failed to log in. Please check your credentials and try again.');
     }
   };
-  
 
   return (
     <div className="login-page">
-      <div className='logo'></div>
-      <form onSubmit={handleLogin}>
+      <div className='login-page__logo'></div>
+      <form onSubmit={handleLogin} className="login-form">
         <input
           type="text"
           placeholder="Username"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
+          className="login-page__input"
         />
         <input
           type="password"
           placeholder="Password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
+          className="login-page__input"
         />
-        <button type="submit">Log In</button>
-        {error && <p>{error}</p>}
+        <button type="submit" className="login-page__button">Log In</button>
+        {error && <p className="login-page__error">{error}</p>}
       </form>
-      <p>Don't have an account? <Link to="/signup">Sign Up</Link></p>
+      <p className="login-page__signup">Don't have an account? <Link to="/signup">Sign Up</Link></p>
     </div>
   );
 };
