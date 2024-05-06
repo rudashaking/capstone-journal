@@ -72,11 +72,13 @@ const LearningModals = () => {
   ]);
 
   useEffect(() => {
-    const isLearningModalShown = localStorage.getItem("isLearningModalShown");
-    if (!isLearningModalShown) {
+    const isFirstVisit = localStorage.getItem("isFirstVisit");
+    if (isFirstVisit === "true") {
       setOpen(true);
+      localStorage.setItem("isFirstVisit", "false");
     }
   }, []);
+  
 
   const handleCloseModal = () => {
     if (modalIndex < modals.length - 1) {
