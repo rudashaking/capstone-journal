@@ -4,7 +4,7 @@ import axios from "axios";
 import VoiceIn from "../../components/VoiceText/VoiceIn";
 import { Button, TextField } from "@mui/material";
 import MoodAnalyzer from "../../components/Moodanalyzer/MoodAnalyzer";
-import DoodlingComponent from "../../components/DoodlingComponent/DoodlingComponent"
+import DoodlingComponent from "../../components/DoodlingComponent/DoodlingComponent";
 import "./JournalPage.scss";
 
 const JournalPage = () => {
@@ -28,7 +28,7 @@ const JournalPage = () => {
           headers: {
             Authorization: token ? `Bearer ${token}` : "",
           },
-        }
+        },
       );
       const formattedEntries = response.data.map((entry) => ({
         ...entry,
@@ -65,7 +65,7 @@ const JournalPage = () => {
           headers: {
             Authorization: token ? `Bearer ${token}` : "",
           },
-        }
+        },
       );
       const newEntry = {
         ...response.data,
@@ -83,7 +83,7 @@ const JournalPage = () => {
 
   const handleSpeechToTextResult = (result) => {
     setSpeechToTextResult(result);
-    setNewEntryContent(result); 
+    setNewEntryContent(result);
   };
 
   const handleDeleteEntry = async (entryId) => {
@@ -95,10 +95,10 @@ const JournalPage = () => {
           headers: {
             Authorization: token ? `Bearer ${token}` : "",
           },
-        }
+        },
       );
       setJournalEntries((prevEntries) =>
-        prevEntries.filter((entry) => entry.entryId !== entryId)
+        prevEntries.filter((entry) => entry.entryId !== entryId),
       );
     } catch (error) {
       console.error("Error deleting entry:", error);
@@ -106,14 +106,13 @@ const JournalPage = () => {
   };
 
   return (
-    <div className="journal-page">
-      <div className="journal-content">
-
-        <ul>
+    <div className="page">
+      <div className="page__content">
+        <ul className="page__ul">
           {journalEntries.map((entry, index) => (
-            <li key={index}>
-              <h3>{entry.title}</h3>
-              <p>{entry.content}</p>
+            <li className="page__li" key={index}>
+              <h3 className="page__h3">{entry.title}</h3>
+              <p className="page__p">{entry.content}</p>
               <p>Created at: {entry.createdAt}</p>
               <Button
                 variant="contained"
@@ -125,19 +124,14 @@ const JournalPage = () => {
             </li>
           ))}
         </ul>
-      
+
         {!addingEntry && (
-          <Button
-            variant="contained"
-            color="primary"
-            onClick={handleAddEntry}
-          >
+          <Button variant="contained" color="primary" onClick={handleAddEntry}>
             Add Entry
           </Button>
         )}
         <div className="doodling-container">
-
-      <DoodlingComponent />
+          <DoodlingComponent />
         </div>
         {addingEntry && (
           <div className="add-entry-form">
@@ -146,7 +140,6 @@ const JournalPage = () => {
               value={newEntryTitle}
               onChange={(e) => setNewEntryTitle(e.target.value)}
               sx={{ width: 375 }}
-          
               helperText="Please Fill In Title:)"
             />
             <TextField

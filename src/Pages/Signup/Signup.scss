@@ -1,3 +1,4 @@
+@use "../../styling/variables" as *;
 .signup {
   margin: 0;
   padding: 0;
@@ -11,10 +12,10 @@
   height: 100vh;
 
   &__logo {
-    background: url('../../assets/images/logo.png');
+    background: url("../../assets/images/logo.png");
     background-size: cover;
     border-radius: 50%;
-    margin: 10px 0;
+    margin: 0.625rem 0;
     width: 10rem;
     height: 10rem;
   }
@@ -23,31 +24,30 @@
     max-width: 25rem;
     padding: 2.5rem;
   }
-  
+
   &__form--group {
     margin-bottom: 1.25rem;
   }
-  
+
   &__error--message {
-    color: red;
+    color:$error-color
   }
-  
+
   &__login--text {
     text-align: center;
   }
-  
+
   &__login--link {
-    color: blue;
+    color:  $primarybutton-color;
   }
-  
+
   &__signup-form {
     &__input {
-      margin-bottom: .625rem;
+      margin-bottom: 0.625rem;
     }
-  
+
     &__button {
-      margin-top: .625rem;
+      margin-top: 0.625rem;
     }
   }
 }
-

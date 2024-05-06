@@ -17,7 +17,7 @@ const Header = () => {
       try {
         if (userId && !["/login", "/signup", "/"].includes(location.pathname)) {
           const response = await axios.get(
-            `http://localhost:8080/users/${userId}`
+            `http://localhost:8080/users/${userId}`,
           );
           setUsername(response.data.username);
         }
@@ -61,8 +61,8 @@ const Header = () => {
           {loading
             ? "Loading..."
             : username
-            ? `Welcome back ${username}!`
-            : "Welcome back!"}
+              ? `Welcome back ${username}!`
+              : "Welcome back!"}
         </div>
       </div>
       <div className="header__right-section">

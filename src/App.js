@@ -1,5 +1,10 @@
 import React, { useState } from "react";
-import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
 import LoginPage from "./Pages/LoginPage/LoginPage";
 import SignupPage from "./Pages/Signup/Signup";
 import JournalCollectionPage from "./Pages/JournalCollection/JournalCollection";
@@ -9,7 +14,7 @@ import FloatingAvatar from "./components/FloatingAvatar/FloatingAvatar";
 import Sidebar from "./components/Sidebar/Sidebar";
 import Support from "./Pages/SupportPage/SupportPage";
 import NotFoundPage from "./Pages/404/404";
-import './styling/global.scss';
+import "./styling/_global.scss";
 
 const App = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -33,12 +38,14 @@ const App = () => {
           <Route path="/404" element={<NotFoundPage />} />
 
           <Route
-            path="/journal-collection/:id" 
+            path="/journal-collection/:id"
             element={<JournalCollectionPage />}
           />
-          <Route path="/journal/:userId/:id/entries" element={<JournalPage/>} />
+          <Route
+            path="/journal/:userId/:id/entries"
+            element={<JournalPage />}
+          />
 
-          
           <Route path="*" element={<Navigate to="/404" />} />
         </Routes>
 

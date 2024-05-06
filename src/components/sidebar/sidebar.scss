@@ -1,35 +1,36 @@
+@use "../../styling/variables" as *;
 .sidebar {
   position: fixed;
-  top: 3rem; 
-  right: 0.25rem; 
+  top: 3rem;
+  right: 0.25rem;
   width: 21.875rem;
   height: 100%;
   background: linear-gradient(#fed5a4 0%, #fee6c8, #ffeeda 100%);
   padding: 1.25rem;
   box-sizing: border-box;
-  border-radius: .625rem;
-  box-shadow: 0 .3rem .3rem rgba(0, 0, 0, 0.75);
+  border-radius: 0.625rem;
+  box-shadow: 0 0.3rem 0.3rem rgba(0, 0, 0, 0.75);
 }
 
 .calendar-reminder {
   display: flex;
   flex-direction: column;
-  gap: 2.5rem; 
+  gap: 2.5rem;
 }
 
 .calendar,
 .reminder,
-.mood-analyzer-instructions{
-  width: 100%;  
-  overflow-y:unset;
+.mood-analyzer-instructions {
+  width: 100%;
+  overflow-y: unset;
 }
 
 textarea {
-  width:18.4375rem; 
+  width: 18.4375rem;
   height: 6.25rem;
-  padding: .625rem;
-  border: .0625rem solid #ccc;
-  border-radius: .3125rem;
+  padding: 0.625rem;
+  border: 0.0625rem solid $border-color;
+  border-radius: 0.3125rem;
   overflow-y: scroll;
   resize: none;
 }

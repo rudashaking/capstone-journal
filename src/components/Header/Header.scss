@@ -1,65 +1,63 @@
+@use "../../styling/variables" as *;
 .header {
-  background: rgb(131, 58, 180);
+  background: $primary-color-rgba;
   background: linear-gradient(
     90deg,
     rgba(131, 58, 180, 1) 0%,
     rgba(40, 169, 158, 1) 50%,
     rgba(252, 176, 69, 1) 100%
   );
-  color: #fff;
+  color: $white;
   height: 3rem;
-  padding: 0 20px;
+  padding: 0 1.25rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  border-radius: 3px;
-}
+  box-shadow: 0 .125rem .25rem rgba(0, 0, 0, 0.1);
+  border-radius: .1875rem;
 
-.header__left-section {
-  display: flex;
-  align-items: center;
-}
+  &__left-section,
+  &__right-section {
+    display: flex;
+    align-items: center;
+  }
 
-.header__logo {
-  width: 2rem;
-  height: 2rem;
-  margin: 0 0.5rem;
-  border-radius: 50%;
-  background: url('../../assets/images/notitlelogo.png');
-  background-size: cover;
-}
+  &__logo,
+  &__profile-img {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    background-size: cover;
+    margin: 0 0.5rem;
+  }
 
-.header__text {
-  font-size: 1rem;
-  font-weight: bold;
-  margin-left: 1rem;
-}
+  &__logo {
+    background: url("../../assets/images/notitlelogo.png");
+    background-size: cover;
+  }
 
-.header__right-section {
-  display: flex;
-  align-items: center;
-}
+  &__profile-img {
+    background: url("../../assets/images/Mohan-muruge.jpg");
+    background-size: cover;
+  }
 
-.header__profile {
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-}
+  &__profile-img:hover {
+    transform: scale(1.1);
+  }
 
-.header__profile-text {
-  margin-right: 0.5rem;
-}
+  &__text {
+    font-size: 1rem;
+    font-weight: bold;
+    margin-left: 1rem;
+  }
 
-.header__profile-img {
-  width: 2rem;
-  height: 2rem;
-  border-radius: 50%;
-  margin-left: 0.5rem;
-  background: url('../../assets/images/Mohan-muruge.jpg');
-  background-size: cover;
-}
+  &__profile {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+  }
 
-.header__profile-img:hover {
-  transform: scale(1.1);
+  &__profile-text {
+    margin-right: 0.5rem;
+  }
 }

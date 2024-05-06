@@ -1,8 +1,16 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom"; 
+import { Link } from "react-router-dom";
 import "./JournalCollection.scss";
-import { Card, CardContent, Typography, Grid, Button, Modal, TextField } from "@mui/material";
-import bookmark from "../../assets/images/—Pngtree—bookmark border_5647410.png"
+import {
+  Card,
+  CardContent,
+  Typography,
+  Grid,
+  Button,
+  Modal,
+  TextField,
+} from "@mui/material";
+import bookmark from "../../assets/images/—Pngtree—bookmark border_5647410.png";
 import axios from "axios";
 import LearningModals from "../../components/LearningModal/LearningModal";
 
@@ -27,7 +35,7 @@ const JournalCollectionPage = () => {
           headers: {
             Authorization: token ? `Bearer ${token}` : "",
           },
-        }
+        },
       );
       setJournals(response.data);
     } catch (error) {
@@ -58,7 +66,7 @@ const JournalCollectionPage = () => {
           headers: {
             Authorization: token ? `Bearer ${token}` : "",
           },
-        }
+        },
       );
       setTitle("");
       setDescription("");
@@ -78,18 +86,17 @@ const JournalCollectionPage = () => {
           headers: {
             Authorization: token ? `Bearer ${token}` : "",
           },
-        }
+        },
       );
-      setJournals(journals.filter(journal => journal.id !== journalId));
+      setJournals(journals.filter((journal) => journal.id !== journalId));
     } catch (error) {
       console.error("Error deleting journal:", error);
     }
   };
 
   return (
-    
     <div className="collection">
-      <LearningModals/>
+      <LearningModals />
       <Modal open={openModal} onClose={handleCloseModal}>
         <div
           className="collection__modal-content"
@@ -137,10 +144,19 @@ const JournalCollectionPage = () => {
               <CardContent className="card">
                 <Typography variant="h5">{journal.title}</Typography>
                 <Typography variant="body2">{journal.description}</Typography>
-                <Link to={`/journal/${userId}/${journal.id}/entries`} style={{ textDecoration: "none" }}>
+                <Link
+                  to={`/journal/${userId}/${journal.id}/entries`}
+                  style={{ textDecoration: "none" }}
+                >
                   <img src={bookmark} className="card__bookmark"></img>
                 </Link>
-                <Button variant="contained" color="secondary" onClick={() => handleDeleteJournal(journal.id)}>Delete</Button>
+                <Button
+                  variant="contained"
+                  color="secondary"
+                  onClick={() => handleDeleteJournal(journal.id)}
+                >
+                  Delete
+                </Button>
               </CardContent>
             </Card>
           </Grid>

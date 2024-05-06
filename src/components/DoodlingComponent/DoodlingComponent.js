@@ -1,5 +1,5 @@
 import React, { useRef, useEffect, useState } from "react";
-import "./DoodlingComponent.scss"
+import "./DoodlingComponent.scss";
 const DoodlingComponent = () => {
   const canvasRef = useRef(null);
   const [isDrawing, setIsDrawing] = useState(false);
@@ -12,7 +12,7 @@ const DoodlingComponent = () => {
     const canvas = canvasRef.current;
     const context = canvas.getContext("2d");
 
-    // Set initial drawing settings
+    
     context.lineWidth = 2;
     context.lineCap = "round";
     context.strokeStyle = "black";
@@ -101,16 +101,21 @@ const DoodlingComponent = () => {
   };
 
   return (
-    <div className="doodle"> Doodle Here!
-      <canvas className="doodle__canvas" ref={canvasRef} width={300} height={600} />
-     <div className="doodle__buttons">
-
-      <button onClick={clearCanvas}>Clear</button>
-      <button onClick={undo}>Undo</button>
-      <button onClick={redo}>Redo</button>
-      <button className="doodle__save">Save(feature coming soon)</button>
-     </div>
-    
+    <div className="doodle">
+      {" "}
+      Doodle Here!
+      <canvas
+        className="doodle__canvas"
+        ref={canvasRef}
+        width={300}
+        height={600}
+      />
+      <div className="doodle__buttons">
+        <button onClick={clearCanvas}>Clear</button>
+        <button onClick={undo}>Undo</button>
+        <button onClick={redo}>Redo</button>
+        <button className="doodle__save">Save(feature coming soon)</button>
+      </div>
     </div>
   );
 };
