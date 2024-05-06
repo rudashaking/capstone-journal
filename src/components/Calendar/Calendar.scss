@@ -1,18 +1,18 @@
 .calendar {
   font-family: Arial, sans-serif;
-  width: 303px;
+  width: 18.9375rem;
   height: 18.625rem;
-  border: 3px solid #ccc;
-  border-radius: 5px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border: .1875rem solid #ccc;
+  border-radius: .3125rem;
+  box-shadow: 0 .125rem .25rem rgba(0, 0, 0, 0.1);
 }
 
 .calendar-header {
-  border-radius: 5px;
+  border-radius: .3125rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 10px;
+  padding: .625rem;
   background-color: #f0f0f0;
  
 }
@@ -22,7 +22,7 @@
   border: none;
   cursor: pointer;
   outline: none;
-  font-size: 16px;
+  font-size: 1rem;
 }
 
 .calendar-header h2 {
@@ -78,8 +78,8 @@
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
-  width: 8px; 
-  height: 8px; 
+  width: .5rem; 
+  height: .5rem; 
   background-color: #FFC0CB; 
   border-radius: 50%; 
 }
