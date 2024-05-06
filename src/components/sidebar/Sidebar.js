@@ -31,6 +31,7 @@ const Sidebar = ({ newFinalTranscript }) => {
                 readOnly: true,
               }}
               value="When using the mood analyzer:
+              ** ONLY WORKS WITH SPEECH TO TEXT**
               1. Speak Clearly
                    2. Click Analyze Mood
                     3. View Analyzed Mood

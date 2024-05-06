@@ -1,26 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom"; 
-import "./JournalCollection.scss"
-import {
-  Card,
-  CardContent,
-  Typography,
-  Grid,
-  Button,
-  Modal,
-  TextField,
-  Alert,
-} from "@mui/material";
-import axios from "axios";
 import "./JournalCollection.scss";
+import { Card, CardContent, Typography, Grid, Button, Modal, TextField } from "@mui/material";
+import bookmark from "../../assets/images/—Pngtree—bookmark border_5647410.png"
+import axios from "axios";
 
 const JournalCollectionPage = () => {
-  
   const userId = localStorage.getItem("userId");
   const [openModal, setOpenModal] = useState(false);
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-  const [alert, setAlert] = useState(null);
   const [journals, setJournals] = useState([]);
 
   useEffect(() => {
@@ -39,7 +28,6 @@ const JournalCollectionPage = () => {
           },
         }
       );
-      console.log(response.data);
       setJournals(response.data);
     } catch (error) {
       console.error("Error fetching journals:", error);
@@ -75,20 +63,33 @@ const JournalCollectionPage = () => {
       setDescription("");
       handleCloseModal();
       setJournals([...journals, response.data.journal]);
-      setAlert({ type: "success", message: "Journal added successfully" });
     } catch (error) {
       console.error("Error adding journal:", error);
-      setAlert({ type: "error", message: "Failed to add journal" });
+    }
+  };
+
+  const handleDeleteJournal = async (journalId) => {
+    try {
+      const token = localStorage.getItem("token");
+      await axios.delete(
+        `http://localhost:8080/journals/${userId}/${journalId}`,
+        {
+          headers: {
+            Authorization: token ? `Bearer ${token}` : "",
+          },
+        }
+      );
+      setJournals(journals.filter(journal => journal.id !== journalId));
+    } catch (error) {
+      console.error("Error deleting journal:", error);
     }
   };
 
   return (
-    <div className="journal-collection-page">
-     
-
+    <div className="collection">
       <Modal open={openModal} onClose={handleCloseModal}>
         <div
-          className="modal-content"
+          className="collection__modal-content"
           style={{
             backgroundColor: "#fff",
             padding: "20px",
@@ -128,41 +129,23 @@ const JournalCollectionPage = () => {
 
       <Grid container spacing={3}>
         {journals.map((journal) => (
-         
           <Grid item key={journal.id} xs={12} sm={3} md={3}>
-                
-            <Link
-            
-              to={`/journal/${userId}/${journal.id}/entries`}
-              style={{ textDecoration: "none" }}
-            >
-              <Card>
-                <CardContent>
-                  <Typography variant="h5">{journal.title}</Typography>
-                  <Typography variant="body2">{journal.description}</Typography>
-                </CardContent>
-              </Card>
-            </Link>
+            <Card>
+              <CardContent className="card">
+                <Typography variant="h5">{journal.title}</Typography>
+                <Typography variant="body2">{journal.description}</Typography>
+                <Link to={`/journal/${userId}/${journal.id}/entries`} style={{ textDecoration: "none" }}>
+                  <img src={bookmark} className="card__bookmark"></img>
+                </Link>
+                <Button variant="contained" color="secondary" onClick={() => handleDeleteJournal(journal.id)}>Delete</Button>
+              </CardContent>
+            </Card>
           </Grid>
         ))}
       </Grid>
       <Button variant="contained" color="primary" onClick={handleOpenModal}>
         Add New Journal
       </Button>
-      {alert && (
-        <Alert
-          severity={alert.type}
-          onClose={() => setAlert(null)}
-          sx={{
-            position: "fixed",
-            bottom: "20px",
-            right: "20px",
-            zIndex: 9999,
-          }}
-        >
-          {alert.message}
-        </Alert>
-      )}
     </div>
   );
 };

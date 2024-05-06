@@ -43,12 +43,14 @@ const SignupPage = () => {
   };
 
   return (
-    <div className="signup-page">
-      <Paper elevation={3} className="form-container">
+    <div className="signup">
+      <div className='signup__logo'></div>
+      <Paper elevation={3} className="signup__form--container">
         <h2>Sign Up for Your Journal</h2>
-        <form onSubmit={handleSignup}>
-          <div className="form-group">
+        <form className="signup__form" onSubmit={handleSignup}>
+          <div className="signup__form--group">
             <TextField
+              className="signup__form--input"
               label="Username"
               variant="outlined"
               value={username}
@@ -56,8 +58,9 @@ const SignupPage = () => {
               fullWidth
             />
           </div>
-          <div className="form-group">
+          <div className="signup__form--group">
             <TextField
+              className="signup__form--input"
               label="Password"
               variant="outlined"
               type="password"
@@ -66,8 +69,9 @@ const SignupPage = () => {
               fullWidth
             />
           </div>
-          <div className="form-group">
+          <div className="signup__form--group">
             <TextField
+              className="signup__form--input"
               label="Confirm Password"
               variant="outlined"
               type="password"
@@ -76,10 +80,10 @@ const SignupPage = () => {
               fullWidth
             />
           </div>
-          {error && <p className="error-message">{error}</p>}
-          <Button type="submit" variant="contained" color="primary">Sign Up</Button>
+          {error && <p className="signup__errorMessage">{error}</p>}
+          <Button className="signup__form--button" type="submit" variant="contained" color="primary">Sign Up</Button>
         </form>
-        <p className="login-text">Already have an account? <Link to="/login" className="login-link">Login</Link></p>
+        <p className="signup__login--text">Already have an account? <Link to="/login" className="signup__login--link">Login</Link></p>
       </Paper>
       <Dialog open={success} onClose={handleCloseModal}>
         <DialogTitle>Success</DialogTitle>

@@ -1,39 +1,55 @@
+
 .journal-page {
-    background:url("../../assets/images/papper.jpeg");
-    background-size: cover;
-    height: 100vh;
-    .css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input{
-   
-      text-align: start;
-      word-wrap: normal;
-      overflow-y: auto;
+  background:url("../../assets/images/papper.jpeg");
+  background-size: cover;
+  min-height: 100vh;
+  height: 100%;
+  
+  
+  .journal-content {
+    padding: 20px;
+    width: 25rem;
+    h3 {
+      font-size: 20px;
+      margin-bottom: 10px;
     }
-    .journal-content {
-      padding: 20px;
-  
-      h2 {
-        font-size: 24px;
-        margin-bottom: 10px;
-      }
-  
-      p {
-        font-size: 16px;
+
+    p {
+      font-size: 16px;
+      margin-bottom: 10px;
+    }
+
+    ul {
+      list-style-type: none;
+      padding: 0;
+
+      li {
         margin-bottom: 20px;
-      }
-  
-      ul {
-        list-style-type: none;
-        padding: 0;
-  
-        li {
-          margin-bottom: 15px;
-  
-          p {
-            font-size: 14px;
-            color: #777;
-          }
+
+        p {
+          font-size: 14px;
+          color: #777;
         }
       }
     }
+
+    .pagination-buttons {
+      margin-top: 20px;
+
+      button {
+        margin-right: 10px;
+      }
+    }
+
+    .add-entry-form {
+      margin-top: 20px;
+    }
   }
-  
+}
+.doodling-container{
+  position: fixed;
+  top: 0;
+  right:0;
+  margin-top: 2.5rem;
+  margin-right:2rem;
+}

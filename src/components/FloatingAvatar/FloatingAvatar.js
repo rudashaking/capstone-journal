@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import './FloatingAvatar.scss'; 
 import { useLocation } from 'react-router-dom';
-import MuiAlert from '@mui/material/Alert';
 
 const FloatingAvatar = ({ toggleSidebar }) => {
     const [isHovered, setIsHovered] = useState(false);
-    const [isAlertShown, setIsAlertShown] = useState(false);
+    const [isSidebarOpen, setIsSidebarOpen] = useState(false); 
     const location = useLocation();
     const [hoverMessage, setHoverMessage] = useState('Click Me');
 
@@ -13,9 +12,9 @@ const FloatingAvatar = ({ toggleSidebar }) => {
         if (location.pathname === '/login' || location.pathname === '/') {
             setHoverMessage('Sign In First');
         } else {
-            setHoverMessage('click for more');
+            setHoverMessage(isSidebarOpen ? 'Close Me' : 'Click for More');
         }
-    }, [location.pathname]);
+    }, [location.pathname, isSidebarOpen]);
 
     const handleMouseOver = () => {
         setIsHovered(true);
@@ -27,13 +26,10 @@ const FloatingAvatar = ({ toggleSidebar }) => {
 
     const handleClick = () => {
         if (!(location.pathname === '/login' || location.pathname === '/')) {
-            toggleSidebar(); 
+            toggleSidebar();
+            setIsSidebarOpen(!isSidebarOpen); 
         }
     }
-
-    useEffect(() => {
-        setIsAlertShown(location.pathname === '/journal');
-    }, []);
 
     return (
         <div className={`floating-avatar ${isHovered ? 'hovered' : ''}`} 
@@ -41,15 +37,6 @@ const FloatingAvatar = ({ toggleSidebar }) => {
              onMouseOut={handleMouseOut}
              onClick={handleClick}>
             {isHovered && <div className="hover-message">{hoverMessage}</div>}
-            {isAlertShown && (
-                <MuiAlert
-                    severity="info"
-                    onClose={() => setIsAlertShown(false)}
-                    sx={{ position: 'fixed', top: '20px', left: '20px', zIndex: 9999 }}
-                >
-                    Hi, I'm Jackie here to help
-                </MuiAlert>
-            )}
         </div>
     );
 }

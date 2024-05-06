@@ -1,10 +1,10 @@
-
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import VoiceIn from "../../components/VoiceText/VoiceIn";
 import { Button, TextField } from "@mui/material";
 import MoodAnalyzer from "../../components/Moodanalyzer/MoodAnalyzer";
+import DoodlingComponent from "../../components/DoodlingComponent/DoodlingComponent"
 import "./JournalPage.scss";
 
 const JournalPage = () => {
@@ -30,7 +30,11 @@ const JournalPage = () => {
           },
         }
       );
-      setJournalEntries(response.data);
+      const formattedEntries = response.data.map((entry) => ({
+        ...entry,
+        createdAt: new Date(entry.createdAt).toLocaleString(),
+      }));
+      setJournalEntries(formattedEntries);
     } catch (error) {
       console.error("Error fetching journal entries:", error);
     }
@@ -79,23 +83,49 @@ const JournalPage = () => {
 
   const handleSpeechToTextResult = (result) => {
     setSpeechToTextResult(result);
-    setNewEntryContent(result); // Update the newEntryContent state as well
+    setNewEntryContent(result); 
+  };
+
+  const handleDeleteEntry = async (entryId) => {
+    try {
+      const token = localStorage.getItem("token");
+      await axios.delete(
+        `http://localhost:8080/journals/${userId}/${id}/entries/${entryId}`,
+        {
+          headers: {
+            Authorization: token ? `Bearer ${token}` : "",
+          },
+        }
+      );
+      setJournalEntries((prevEntries) =>
+        prevEntries.filter((entry) => entry.entryId !== entryId)
+      );
+    } catch (error) {
+      console.error("Error deleting entry:", error);
+    }
   };
 
   return (
     <div className="journal-page">
       <div className="journal-content">
-        {/* Render existing journal entries */}
+
         <ul>
           {journalEntries.map((entry, index) => (
             <li key={index}>
               <h3>{entry.title}</h3>
               <p>{entry.content}</p>
               <p>Created at: {entry.createdAt}</p>
+              <Button
+                variant="contained"
+                color="secondary"
+                onClick={() => handleDeleteEntry(entry.entryId)}
+              >
+                Delete
+              </Button>
             </li>
           ))}
         </ul>
-        {/* Button to add a new entry */}
+      
         {!addingEntry && (
           <Button
             variant="contained"
@@ -105,7 +135,10 @@ const JournalPage = () => {
             Add Entry
           </Button>
         )}
-        {/* Form for adding a new entry */}
+        <div className="doodling-container">
+
+      <DoodlingComponent />
+        </div>
         {addingEntry && (
           <div className="add-entry-form">
             <TextField
@@ -113,6 +146,8 @@ const JournalPage = () => {
               value={newEntryTitle}
               onChange={(e) => setNewEntryTitle(e.target.value)}
               sx={{ width: 375 }}
+          
+              helperText="Please Fill In Title:)"
             />
             <TextField
               label="New Entry Content"

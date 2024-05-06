@@ -1,100 +1,53 @@
-
-.signup-page{
+.signup {
   margin: 0;
   padding: 0;
   background: url("../../assets/images/journal\ cover.jpeg");
-background-size: cover;
-width: 750px;
-height: 960px;
+  background-size: cover;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  align-items: center;
+  height: 100vh;
 
-}
-
-
-
-.form-container {
-    width: 300px;
-    height: auto;
-    background: rgba(255, 255, 255, 0.8); 
-    max-width: 400px;
-    margin: 10rem 15rem; 
-    padding: 20px;
-    border-radius: 10px;
-    backdrop-filter: blur(5px); 
-}
-
-  
-  
-  h2 {
-    color: #3f334d;
-    text-align: center;
-    margin-bottom: 20px;
-  }
-  
-  .form-group {
-    margin-bottom: 20px;
-  }
-  
-  label {
-    color: #574b60;
-    font-weight: bold;
-  }
-  
-  .input-field {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #7d8491;
-    border-radius: 5px;
-  }
-  
-  .login-button {
-    background-color: #9fa5a9;
-    color: #ffffff;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    width: 100%;
-  }
-  
-  .login-button:hover {
-    background-color: #c0c5c1;
-  }
-  
-  .signup-text {
-    text-align: center;
-    color: #7d8491;
-    font-style: italic;
-  }
-  
-  .signup-link {
-    color: #574b60;
-    text-decoration: underline;
-    cursor: pointer;
-  }
-  
-  .avatar-container {
-    position: relative;
-    text-align: center;
-  }
-  
-  .avatar-image {
-    width: 150px;
-    height: 150px;
+  &__logo {
+    background: url('../../assets/images/logo.png');
+    background-size: cover;
     border-radius: 50%;
-    margin-bottom: 20px;
+    margin: 10px 0;
+    width: 10rem;
+    height: 10rem;
+  }
+
+  &__form--container {
+    max-width: 25rem;
+    padding: 2.5rem;
   }
   
-  .avatar-text {
-    position: absolute;
-    background-color: #ffffff;
-    border: 1px solid #7d8491;
-    border-radius: 10px;
-    padding: 10px;
-    max-width: 70%;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    color: #7d8491;
-    font-style: italic;
+  &__form--group {
+    margin-bottom: 1.25rem;
   }
   
+  &__error--message {
+    color: red;
+  }
+  
+  &__login--text {
+    text-align: center;
+  }
+  
+  &__login--link {
+    color: blue;
+  }
+  
+  &__signup-form {
+    &__input {
+      margin-bottom: .625rem;
+    }
+  
+    &__button {
+      margin-top: .625rem;
+    }
+  }
+}
+
