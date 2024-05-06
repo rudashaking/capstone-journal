@@ -1,106 +1,74 @@
-
-.login-page {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    background:url("../../assets/journal\ cover.jpeg") ;
-    background-size: cover;
-}
-.logo{
-  background: url('../../assets/logo.png');
+.login{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: end;
+  height: 100vh;
+  background:url("../../assets/images/journal\ cover.jpeg") ;
   background-size: cover;
-  border-radius: 50%;
-  margin-bottom: 30px;
-  width: 10rem;
-  height: 10rem;
-}
-.form-container {
-    width: 300px;
-    height: auto;
-    max-width: 400px;
-    margin: 10rem 15rem; 
-    padding: 20px;
-    border-radius: 10px;
-   
-}
-  
-  h2 {
-    color: #7d8491;
-    text-align: center;
-    margin-bottom: 20px;
-  }
-  
-  .form-group {
-    margin-bottom: 20px;
-  }
-  
-  label {
-    color: #eaf0ce;
-    font-weight: bold;
-  }
-  
-  .input-field {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #7d8491;
-    border-radius: 5px;
-  }
-  
-  .login-button {
-    background-color: #9fa5a9;
-    color: #ffffff;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    width: 100%;
-  }
-  
-  .login-button:hover {
-    background-color: #c0c5c1;
-  }
-  
-  .signup-text {
-    text-align: center;
-  }
-  
-  .signup-button {
-    background-color: transparent;
-    border: none;
-    color: #574b60;
-    cursor: pointer;
-  }
 
-  
-  .avatar-image {
-    width: 150px;
-    height: 150px;
+  &__logo {
+    background: url('../../assets/images/logo.png');
+    background-size: cover;
     border-radius: 50%;
-    background: url("../../assets/Bash.png");
+    margin: 10px 0;
+    width: 7rem;
+    height: 7rem;
   }
-  .avatar-container {
-    position: relative;
-    text-align: center;
-    width: 300px;
-  }
-  
-  .avatar-text {
-    position: absolute;
-    background-color: #ffffff;
-    border: 1px solid #7d8491;
-    border-radius: 10px;
-    padding: 10px;
-    height: 150px;
-    width: 300px;
-    bottom: 20px; 
-    left: 50%;
-    transform: translateX(-50%);
-    color: #7d8491;
-    font-style: italic;
-    text-align: center; 
-}
 
+  &__form {
+    width: 300px;}
+
+  &__input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 16px;
+      outline: none;
+
+      &::placeholder {
+        color: #aaa;
+      }
+    }
+
+  &__button {
+      width: 100%;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      background-color: #007bff;
+      color: #fff;
+      font-size: 16px;
+      cursor: pointer;
+
+      &:hover {
+        background-color: #0056b3;
+      }
+    }
   
-  
+
+  &__error {
+    color: red;
+    margin-top: 10px;
+  }
+
+  &__signup {
+    color: #007bff;
+    margin-top: 20px;
+
+    a {
+      color: #007bff;
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}
+.css-dpjnhs-MuiInputBase-root-MuiOutlinedInput-root{
+  width:400px;
+  height: 300px;
+}

@@ -1,19 +1,23 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './FloatingAvatar.scss'; 
-import { useState, } from 'react';
 import { useLocation } from 'react-router-dom';
 
 const FloatingAvatar = ({ toggleSidebar }) => {
     const [isHovered, setIsHovered] = useState(false);
+    const [isSidebarOpen, setIsSidebarOpen] = useState(false); 
     const location = useLocation();
     const [hoverMessage, setHoverMessage] = useState('Click Me');
-    const handleMouseOver = () => {
-        setIsHovered(true);
+
+    useEffect(() => {
         if (location.pathname === '/login' || location.pathname === '/') {
             setHoverMessage('Sign In First');
         } else {
-            setHoverMessage('Ready To Listen');
+            setHoverMessage(isSidebarOpen ? 'Close Me' : 'Click for More');
         }
+    }, [location.pathname, isSidebarOpen]);
+
+    const handleMouseOver = () => {
+        setIsHovered(true);
     }
 
     const handleMouseOut = () => {
@@ -22,7 +26,8 @@ const FloatingAvatar = ({ toggleSidebar }) => {
 
     const handleClick = () => {
         if (!(location.pathname === '/login' || location.pathname === '/')) {
-            toggleSidebar(); 
+            toggleSidebar();
+            setIsSidebarOpen(!isSidebarOpen); 
         }
     }
 
@@ -31,8 +36,7 @@ const FloatingAvatar = ({ toggleSidebar }) => {
              onMouseOver={handleMouseOver}
              onMouseOut={handleMouseOut}
              onClick={handleClick}>
-{isHovered && <div className="hover-message">{hoverMessage}</div>}
-    
+            {isHovered && <div className="hover-message">{hoverMessage}</div>}
         </div>
     );
 }

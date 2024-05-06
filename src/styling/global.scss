@@ -1,0 +1,11 @@
+@use "../styling//typography" as *;
+
+html,
+body {
+  font-family: $body-font-family;
+  padding: 0;
+  margin: 0;
+  min-width: 71.25rem;
+  max-width: 71.25rem;
+ 
+}

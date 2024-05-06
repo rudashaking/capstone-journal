@@ -1,161 +1,3 @@
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
-  
-
-
-
-
-
-
-
-
-
-  
-
-
-  
-
-
-
-
-
-
-
-
-
-  
-
-
-
-  
-
-
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 import React, { useState } from 'react';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
@@ -196,21 +38,21 @@ const MoodAnalyzer = ({ newFinalTranscript }) => {
       Surprised: 0,
     };
 
-    
+    // Convert transcript to lowercase for case-insensitive matching
     const transcriptLowercase = transcript.toLowerCase();
 
-    
+    // Iterate through mood words and count occurrences in the transcript
     for (const mood in moodWords) {
       moodWords[mood].forEach((word) => {
-        const regex = new RegExp(`\\b${word}\\b`, 'gi'); 
+        const regex = new RegExp(`\\b${word}\\b`, 'gi'); // Create regex pattern for whole word match
         const matches = transcriptLowercase.match(regex);
         if (matches) {
-          moodScores[mood] += matches.length; 
+          moodScores[mood] += matches.length; // Increment score for each match
         }
       });
     }
 
-    
+    // Determine the mood with the highest score
     let maxScore = -1;
     let analyzedMood = 'Neutral';
 
@@ -226,7 +68,7 @@ const MoodAnalyzer = ({ newFinalTranscript }) => {
 
   const fetchMoodHelperData = async (mood) => {
     try {
-      const response = await axios.get(`http:
+      const response = await axios.get(`http://localhost:8080/moods/${mood}`);
       return response.data;
     } catch (error) {
       console.error('Error fetching mood helper data:', error);

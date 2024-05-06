@@ -7,6 +7,7 @@ import JournalPage from "./Pages/JournalPage/JournalPage";
 import Header from "./components/Header/Header";
 import FloatingAvatar from "./components/FloatingAvatar/FloatingAvatar";
 import Sidebar from "./components/Sidebar/Sidebar";
+import './styling/global.scss'
 
 const App = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
