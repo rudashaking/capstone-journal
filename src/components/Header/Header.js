@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { Menu, MenuItem } from "@mui/material";
 import "./Header.scss";
@@ -34,9 +34,6 @@ const Header = () => {
   const handleLogout = () => {
     localStorage.removeItem("userId");
     localStorage.removeItem("token");
-
-    window.history.pushState(null, null, "/");
-
     navigate("/login");
   };
 
@@ -48,10 +45,17 @@ const Header = () => {
     setAnchorEl(null);
   };
 
+  const handleSupportPage = () => {
+    navigate("/support");
+    handleCloseMenu();
+  };
+
   return (
     <div className="header">
       <div className="header__left-section">
-        <div className="header__logo"></div>
+        <Link to="/journal-collection/:id">
+          <div className="header__logo"></div>
+        </Link>
         <div className="header__title">Insightful</div>
         <div className="header__text">
           {loading
@@ -80,6 +84,7 @@ const Header = () => {
           }}
           getContentAnchorEl={null}
         >
+          <MenuItem onClick={handleSupportPage}>Support Page</MenuItem>
           <MenuItem onClick={handleLogout}>Logout</MenuItem>
         </Menu>
       </div>
