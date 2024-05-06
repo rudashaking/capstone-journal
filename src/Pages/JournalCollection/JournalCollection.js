@@ -4,6 +4,7 @@ import "./JournalCollection.scss";
 import { Card, CardContent, Typography, Grid, Button, Modal, TextField } from "@mui/material";
 import bookmark from "../../assets/images/—Pngtree—bookmark border_5647410.png"
 import axios from "axios";
+import LearningModals from "../../components/LearningModal/LearningModal";
 
 const JournalCollectionPage = () => {
   const userId = localStorage.getItem("userId");
@@ -86,7 +87,9 @@ const JournalCollectionPage = () => {
   };
 
   return (
+    
     <div className="collection">
+      <LearningModals/>
       <Modal open={openModal} onClose={handleCloseModal}>
         <div
           className="collection__modal-content"

@@ -1,0 +1,30 @@
+
+.support{
+    padding: 1.25rem;
+    background: url("../../assets/images/papper.jpeg");
+   background-size: cover;
+  
+  &__h1 {
+   
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 1.25rem;
+  }
+  
+  &__h2 {
+    
+    font-size: 1.25rem;
+    margin-bottom: .625rem;
+  }
+  
+  &__h3 {
+    font-size: 1.125rem;
+    margin-bottom: .3125rem;
+
+  }
+  
+  &__p {
+    margin-bottom: .3125rem;
+    text-indent: 1rem;
+  }
+}
