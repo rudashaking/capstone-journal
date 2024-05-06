@@ -1,5 +1,5 @@
 @use "../styling//typography" as *;
-
+@use "../styling/variables" as *;
 html,
 body {
   font-family: $body-font-family;

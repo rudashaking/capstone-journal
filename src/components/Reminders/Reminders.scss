@@ -1,10 +1,11 @@
+@use "../../styling/variables" as *;
 .reminder-container {
-  width: 300px;
+  width: 18.75rem;
   height: 17rem;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  padding: 10px;
+  border: 1px solid $border-color;
+  border-radius: .3125rem;
+  box-shadow: 0 .125rem .25rem rgba(0, 0, 0, 0.1);
+  padding: .625rem;
   overflow: scroll;
 }
 
@@ -13,10 +14,10 @@
 }
 
 .reminder-item {
-  padding: 10px;
-  margin-bottom: 10px;
-  border-radius: 5px;
-  color: #fff;
+  padding: .625rem;
+  margin-bottom: .625rem;
+  border-radius: .3125rem;
+  color: $white;
 }
 
 .reminder-time {
@@ -24,5 +25,5 @@
 }
 
 .reminder-title {
-  margin-top: 5px;
+  margin-top: .3125rem;
 }

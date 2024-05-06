@@ -12,7 +12,7 @@ const DoodlingComponent = () => {
     const canvas = canvasRef.current;
     const context = canvas.getContext("2d");
 
-    // Set initial drawing settings
+    
     context.lineWidth = 2;
     context.lineCap = "round";
     context.strokeStyle = "black";

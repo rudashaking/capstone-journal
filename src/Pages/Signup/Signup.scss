@@ -1,3 +1,4 @@
+@use "../../styling/variables" as *;
 .signup {
   margin: 0;
   padding: 0;
@@ -29,7 +30,7 @@
   }
 
   &__error--message {
-    color: red;
+    color:$error-color
   }
 
   &__login--text {
@@ -37,7 +38,7 @@
   }
 
   &__login--link {
-    color: blue;
+    color:  $primarybutton-color;
   }
 
   &__signup-form {

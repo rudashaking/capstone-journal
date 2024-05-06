@@ -1,3 +1,4 @@
+@use "../../styling/variables" as *;
 .login {
   display: flex;
   flex-direction: column;
@@ -24,13 +25,13 @@
     width: 100%;
     padding: 0.625rem;
     margin-bottom: 0.9375rem;
-    border: 0.0625rem solid #ccc;
+    border: 0.0625rem solid $border-color;
     border-radius: 0.3125rem;
     font-size: 1rem;
     outline: none;
 
     &::placeholder {
-      color: #aaa;
+      color: $placeholder-color;
     }
   }
 
@@ -39,27 +40,27 @@
     padding: 0.625rem;
     border: none;
     border-radius: 0.3125rem;
-    background-color: #007bff;
-    color: #fff;
+    background-color: $primarybutton-color;
+    color: $white;
     font-size: 1rem;
     cursor: pointer;
 
     &:hover {
-      background-color: #0056b3;
+      background-color: $primarybutton-color-hover;
     }
   }
 
   &__error {
-    color: red;
+    color:$error-color;
     margin-top: 0.625rem;
   }
 
   &__signup {
-    color: #007bff;
+    color: $primarybutton-color;
     margin-top: 20px;
 
     a {
-      color: #007bff;
+      color:  $primarybutton-color;
       text-decoration: none;
 
       &:hover {

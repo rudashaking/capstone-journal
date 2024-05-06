@@ -1,3 +1,4 @@
+@use "../../styling/variables" as *;
 .doodle {
   position: sticky;
   top: 0;
@@ -14,7 +15,7 @@
     border-radius: 0.3125rem;
   }
   &__save {
-    background-color: #ccc;
+    background-color: $border-color;
     color: #666;
     padding: 0.625rem 1.25rem;
     border: none;
@@ -29,15 +30,15 @@
       display: block;
       margin-top: 0.625rem;
       padding: 0.625rem 1.25rem;
-      background-color: #007bff;
-      color: #ffffff;
+      background-color: $primarybutton-color;
+      color: $white;
       border: none;
       border-radius: 0.25rem;
       cursor: pointer;
       transition: background-color 0.3s ease;
 
       &:hover {
-        background-color: #0056b3;
+        background-color: $primarybutton-color-hover;
       }
     }
   }

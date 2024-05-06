@@ -1,5 +1,20 @@
-#007bff primary button
-red error color
-#fff white
-#ccc border
-#aaa; placeholder color
+// Primary button color
+$primarybutton-color: #007bff;
+$primarybutton-color-hover: #0056b3;
+
+// Error color
+$error-color: red;
+
+// White and placeholder colors
+$white: #fff;
+$placeholder-color: #aaa;
+
+// Border color
+$border-color: #ccc;
+
+// Color variables
+$primary-color-rgba: rgba(131, 58, 180, 1);
+$secondary-color-rgba: rgba(40, 169, 158, 1);
+$tertiary-color-rgba: rgba(252, 176, 69, 1);
+$background-color:#a9a9a9;
+

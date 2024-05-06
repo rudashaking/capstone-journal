@@ -1,3 +1,4 @@
+@use "../../styling/variables" as *;
 .sidebar {
   position: fixed;
   top: 3rem;
@@ -28,7 +29,7 @@ textarea {
   width: 18.4375rem;
   height: 6.25rem;
   padding: 0.625rem;
-  border: 0.0625rem solid #ccc;
+  border: 0.0625rem solid $border-color;
   border-radius: 0.3125rem;
   overflow-y: scroll;
   resize: none;

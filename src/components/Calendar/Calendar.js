@@ -41,7 +41,7 @@ const Calendar = () => {
 
     for (let i = 0; i < firstDayOfMonth; i++) {
       calendarArray.push(
-        <div key={`empty-${i}`} className="calendar-day empty"></div>,
+        <div key={`empty-${i}`} className="calendar__day empty"></div>,
       );
     }
 
@@ -58,7 +58,7 @@ const Calendar = () => {
         (reminderDate) => reminderDate.toDateString() === date.toDateString(),
       );
 
-      let classNames = `calendar-day ${date.toDateString() === selectedDate.toDateString() ? "selected" : ""}`;
+      let classNames = `calendar__day ${date.toDateString() === selectedDate.toDateString() ? "selected" : ""}`;
       if (isSubmitted) {
         classNames += " submitted";
       }
@@ -82,7 +82,7 @@ const Calendar = () => {
 
   return (
     <div className="calendar">
-      <div className="calendar-header">
+      <div className="calendar__header">
         <button
           onClick={() =>
             setSelectedDate(
@@ -116,7 +116,7 @@ const Calendar = () => {
           &gt;
         </button>
       </div>
-      <div className="calendar-grid">{generateCalendar()}</div>
+      <div className="calendar__grid">{generateCalendar()}</div>
     </div>
   );
 };
