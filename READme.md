@@ -26,11 +26,13 @@ In today's busy world, keeping a journal can be tough. Insightful uses AI to pro
 ## Tech Stack
 
 ### Frontend:
+
 - JavaScript
 - React
 - Material-UI
 
 ### Backend:
+
 - Node.js
 - Express.js
 - MongoDB
@@ -50,20 +52,24 @@ In today's busy world, keeping a journal can be tough. Insightful uses AI to pro
 ## Suggested Resources
 
 ### Backend:
+
 - **Node.js:** For building server-side applications.
 - **Express.js:** A web framework for Node.js.
 - **MongoDB:** A flexible NoSQL database.
 - **Mongoose:** An ODM library for MongoDB.
 
 ### Frontend:
+
 - **React:** A library for building user interfaces.
 - **Material-UI:** A UI framework following Google's Material Design.
 
 ### AI Integration:
+
 - **NLP libraries:** For generating prompts and quotes.
 - **Music recommendation APIs:** For personalized music suggestions.
 
 ## Dependencies
+
     "@emotion/react": "^11.11.4",
     "@emotion/styled": "^11.11.5",
     "@mui/material": "^5.15.15",

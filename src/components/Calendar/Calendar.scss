@@ -2,19 +2,18 @@
   font-family: Arial, sans-serif;
   width: 18.9375rem;
   height: 18.625rem;
-  border: .1875rem solid #ccc;
-  border-radius: .3125rem;
-  box-shadow: 0 .125rem .25rem rgba(0, 0, 0, 0.1);
+  border: 0.1875rem solid #ccc;
+  border-radius: 0.3125rem;
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.1);
 }
 
 .calendar-header {
-  border-radius: .3125rem;
+  border-radius: 0.3125rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: .625rem;
+  padding: 0.625rem;
   background-color: #f0f0f0;
- 
 }
 
 .calendar-header button {
@@ -36,7 +35,7 @@
 }
 
 .calendar-day {
-  position: relative; 
+  position: relative;
   padding: 10px;
   border: 1px solid #ccc;
   text-align: center;
@@ -56,30 +55,29 @@
   color: #fff;
 }
 
-
 .calendar-day.submitted::after {
-  content: ''; 
-  position: absolute; 
+  content: "";
+  position: absolute;
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 3px; 
-  background-color: green; 
+  height: 3px;
+  background-color: green;
 }
 .calendar-day.has-reminder {
-  background-color: #FFC0CB; 
-  color: black; 
+  background-color: #ffc0cb;
+  color: black;
   position: relative;
 }
 
 .calendar-day.has-reminder::after {
-  content: ''; 
-  position: absolute; 
+  content: "";
+  position: absolute;
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
-  width: .5rem; 
-  height: .5rem; 
-  background-color: #FFC0CB; 
-  border-radius: 50%; 
+  width: 0.5rem;
+  height: 0.5rem;
+  background-color: #ffc0cb;
+  border-radius: 50%;
 }

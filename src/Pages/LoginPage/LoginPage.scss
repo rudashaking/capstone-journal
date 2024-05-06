@@ -1,57 +1,57 @@
-.login{
+.login {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: end;
   height: 100vh;
-  background:url("../../assets/images/journal\ cover.jpeg") ;
+  background: url("../../assets/images/journal\ cover.jpeg");
   background-size: cover;
 
   &__logo {
-    background: url('../../assets/images/logo.png');
+    background: url("../../assets/images/logo.png");
     background-size: cover;
     border-radius: 50%;
-    margin: 10px 0;
+    margin: 0.625rem 0;
     width: 7rem;
     height: 7rem;
   }
 
   &__form {
-    width: 300px;}
+    width: 300px;
+  }
 
   &__input {
-      width: 100%;
-      padding: 10px;
-      margin-bottom: 15px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      font-size: 16px;
-      outline: none;
+    width: 100%;
+    padding: 0.625rem;
+    margin-bottom: 0.9375rem;
+    border: 0.0625rem solid #ccc;
+    border-radius: 0.3125rem;
+    font-size: 1rem;
+    outline: none;
 
-      &::placeholder {
-        color: #aaa;
-      }
+    &::placeholder {
+      color: #aaa;
     }
+  }
 
   &__button {
-      width: 100%;
-      padding: 10px;
-      border: none;
-      border-radius: 5px;
-      background-color: #007bff;
-      color: #fff;
-      font-size: 16px;
-      cursor: pointer;
+    width: 100%;
+    padding: 0.625rem;
+    border: none;
+    border-radius: 0.3125rem;
+    background-color: #007bff;
+    color: #fff;
+    font-size: 1rem;
+    cursor: pointer;
 
-      &:hover {
-        background-color: #0056b3;
-      }
+    &:hover {
+      background-color: #0056b3;
     }
-  
+  }
 
   &__error {
     color: red;
-    margin-top: 10px;
+    margin-top: 0.625rem;
   }
 
   &__signup {
@@ -68,7 +68,7 @@
     }
   }
 }
-.css-dpjnhs-MuiInputBase-root-MuiOutlinedInput-root{
-  width:400px;
-  height: 300px;
+.css-dpjnhs-MuiInputBase-root-MuiOutlinedInput-root {
+  width: 25rem;
+  height: 18.75rem;
 }
