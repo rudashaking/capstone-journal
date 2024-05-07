@@ -1,6 +1,6 @@
 # Insightful
 
-Insightful is a journaling Desktop app powered by AI that helps users reflect on their thoughts and emotions through prompts, quotes, and music recommendations.
+Insightful is a journaling Desktop app (future) powered by AI that helps users reflect on their thoughts and emotions through prompts, quotes, and music recommendations.
 
 ## Overview
 
