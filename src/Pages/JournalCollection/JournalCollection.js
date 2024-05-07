@@ -132,7 +132,7 @@ const JournalCollectionPage = () => {
             color="primary"
             onClick={handleAddJournal}
           >
-            Add
+          Add
           </Button>
         </div>
       </Modal>
