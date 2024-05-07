@@ -1,0 +1,14 @@
+@use "../../styling/variables" as *;
+.voicein {
+  background-color: rgb(47, 220, 206);
+  border-radius: .3125rem;
+  .controls {
+    background-color: rgb(47, 220, 206); 
+    padding: .625rem;
+    border-radius: .3125rem;
+  }
+
+  .controls button {
+    margin-right: .625rem;
+  }
+}

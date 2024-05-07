@@ -1,0 +1,45 @@
+@use "../../styling/variables" as *;
+.doodle {
+  position: sticky;
+  top: 0;
+  right: 0;
+  width: 18.75rem;
+  height: 80%;
+  background: transparent;
+  border: none;
+  padding: 1.25rem;
+  box-sizing: border-box;
+  &__canvas {
+    background: transparent;
+    border: 0.25rem solid rgb(116, 113, 113);
+    border-radius: 0.3125rem;
+  }
+  &__save {
+    background-color: $border-color;
+    color: #666;
+    padding: 0.625rem 1.25rem;
+    border: none;
+    border-radius: 0.3125rem;
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+  &__buttons {
+    display: flex;
+    gap: 0.25rem;
+    button {
+      display: block;
+      margin-top: 0.625rem;
+      padding: 0.625rem 1.25rem;
+      background-color: $primarybutton-color;
+      color: $white;
+      border: none;
+      border-radius: 0.25rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+
+      &:hover {
+        background-color: $primarybutton-color-hover;
+      }
+    }
+  }
+}

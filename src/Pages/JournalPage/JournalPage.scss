@@ -1,0 +1,42 @@
+.page {
+  background: url("../../assets/images/papper.jpeg");
+  background-size: cover;
+  min-height: 100vh;
+  height: 100%;
+
+  &__content {
+    padding: 1.25rem;
+    width: 25rem;
+  }
+  &__h3 {
+    font-size: 1.25rem;
+    margin-bottom: 0.625rem;
+  }
+
+  &__p {
+    font-size: 1rem;
+    margin-bottom: 0.625rem;
+  }
+
+  &__ul {
+    list-style-type: none;
+    padding: 0;
+  }
+
+  &__li {
+    margin-bottom: 1.25rem;
+  }
+
+  &__p {
+    font-size: 0.875rem;
+    color: #777;
+  }
+}
+
+.doodling-container {
+  position: fixed;
+  top: 0;
+  right: 0;
+  margin-top: 2.5rem;
+  margin-right: 2rem;
+}

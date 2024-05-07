@@ -1,0 +1,33 @@
+@use "../../styling/variables" as *;
+.floating-avatar {
+  background: url("../../assets/images/jackie.jpeg");
+  background-size: cover;
+  position: fixed;
+  bottom: 1.25rem;
+  right: 1.25rem;
+  width: 3.75rem;
+  height: 3.75rem;
+  border-radius: 50%;
+  background-color: $primarybutton-color;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 0.3rem 0.3rem rgba(0, 0, 0, 0.75);
+}
+
+.hovered .hover-message {
+  display: block;
+}
+
+.hover-message {
+  text-align: center;
+  display: none;
+  position: absolute;
+  top: -1.875rem;
+  left: -1.25rem;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: $white;
+  padding: .3125rem .625rem;
+  border-radius: .3125rem;
+}

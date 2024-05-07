@@ -1,0 +1,75 @@
+@use "../../styling/variables" as *;
+.login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: end;
+  height: 100vh;
+  background: url("../../assets/images/journal\ cover.jpeg");
+  background-size: cover;
+
+  &__logo {
+    background: url("../../assets/images/logo.png");
+    background-size: cover;
+    border-radius: 50%;
+    margin: 0.625rem 0;
+    width: 7rem;
+    height: 7rem;
+  }
+
+  &__form {
+    width: 300px;
+  }
+
+  &__input {
+    width: 100%;
+    padding: 0.625rem;
+    margin-bottom: 0.9375rem;
+    border: 0.0625rem solid $border-color;
+    border-radius: 0.3125rem;
+    font-size: 1rem;
+    outline: none;
+
+    &::placeholder {
+      color: $placeholder-color;
+    }
+  }
+
+  &__button {
+    width: 100%;
+    padding: 0.625rem;
+    border: none;
+    border-radius: 0.3125rem;
+    background-color: $primarybutton-color;
+    color: $white;
+    font-size: 1rem;
+    cursor: pointer;
+
+    &:hover {
+      background-color: $primarybutton-color-hover;
+    }
+  }
+
+  &__error {
+    color:$error-color;
+    margin-top: 0.625rem;
+  }
+
+  &__signup {
+    color: $primarybutton-color;
+    margin-top: 20px;
+
+    a {
+      color:  $primarybutton-color;
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}
+.css-dpjnhs-MuiInputBase-root-MuiOutlinedInput-root {
+  width: 25rem;
+  height: 18.75rem;
+}

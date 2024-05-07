@@ -1,0 +1,84 @@
+@use "../../styling/variables" as *;
+.calendar {
+  font-family: Arial, sans-serif;
+  width: 18.9375rem;
+  height: 18.625rem;
+  border: 0.1875rem solid $border-color;
+  border-radius: 0.3125rem;
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.1);
+
+  &__header {
+    border-radius: 0.3125rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.625rem;
+    background-color: $white;
+
+    button {
+      background: none;
+      border: none;
+      cursor: pointer;
+      outline: none;
+      font-size: 1rem;
+    }
+
+    h2 {
+      margin: 0;
+    }
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    border-collapse: collapse;
+  }
+
+  &__day {
+    position: relative;
+    padding: .625rem;
+    border: .0625rem solid $border-color;
+    text-align: center;
+
+    &.empty {
+      border: none;
+    }
+
+    &:hover {
+      background-color:$white;
+      cursor: pointer;
+    }
+
+    &.selected {
+      background-color: $primarybutton-color;
+      color: $white;
+    }
+
+    &.submitted::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: .1875rem;
+      background-color: green;
+    }
+
+    &.has-reminder {
+      background-color: #ffc0cb;
+      color: black;
+
+      &::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 0.5rem;
+        height: 0.5rem;
+        background-color: #ffc0cb;
+        border-radius: 50%;
+      }
+    }
+  }
+}
