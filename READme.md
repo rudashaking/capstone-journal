@@ -35,8 +35,7 @@ In today's busy world, keeping a journal can be tough. Insightful uses AI to pro
 
 - Node.js
 - Express.js
-- MongoDB
-- Mongoose
+
 
 ## Nice-to-Haves
 
